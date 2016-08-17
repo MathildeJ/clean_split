@@ -58,8 +58,8 @@ window.addEventListener('DOMContentLoaded', function() {
 <body>
 <script>
 window.addEventListener('message', function(e){
-	//console.log(e.data);
-	//console.log(typeof e.data);
+	console.log(e.data);
+	console.log(typeof e.data);
 	var string = JSON.stringify(e.data);
 	console.log(string);
 	if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
