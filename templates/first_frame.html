@@ -41,7 +41,12 @@ window.addEventListener('DOMContentLoaded', function() {
 			//var nav_bar = document.getElementById('url');
 			//nav_bar.style.visibility = 'visible';
 	      }).startLeader();
+		if(url){
+			console.log('ok?');
+			Surfly.session().relocate(url);
+		}
 	} else {
+		console.log('current session');
 		if(url){
 			console.log('ok');
 			Surfly.currentSession.relocate(url);
@@ -54,6 +59,8 @@ window.addEventListener('DOMContentLoaded', function() {
 function relocate(){
 	url = document.getElementById('url').value;
 	console.log(url);
+	console.log(Surfly.currentSession);
+	console.log(window.__surfly);
 }
 </script>
 
@@ -61,7 +68,7 @@ function relocate(){
 
 <body>
 <form id="nav" action="" method="post">
-	<h1 class="text-title">Nav bar</h1>
+	<h3 class="text-title">Nav bar</h3>
         <label>
         	<span>Website :</span>
                 <input id="url" type="text" name="url" />
