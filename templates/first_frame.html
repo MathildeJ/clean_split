@@ -41,26 +41,15 @@ window.addEventListener('DOMContentLoaded', function() {
 			//var nav_bar = document.getElementById('url');
 			//nav_bar.style.visibility = 'visible';
 	      }).startLeader();
-		if(url){
-			console.log('ok?');
-			Surfly.session().relocate(url);
-		}
-	} else {
-		console.log('current session');
-		if(url){
-			console.log('ok');
-			Surfly.currentSession.relocate(url);
-		}
-	}
+	} 
      }
    });
  });
 
 function relocate(){
 	url = document.getElementById('url').value;
-	console.log(url);
-	console.log(Surfly.currentSession);
-	console.log(window.__surfly);
+	//console.log(url);
+	window.top.postMessage("relocate: " + url, "*");
 }
 </script>
 
@@ -91,6 +80,10 @@ window.addEventListener('message', function(e){
 			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
+	}
+
+	if(string.indexOf('test')){
+		console.log(string);
 	}
 })
 </script>
