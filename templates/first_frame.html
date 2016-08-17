@@ -88,9 +88,9 @@ window.addEventListener('message', function(e){
 	}
 	
 	if(string.indexOf('test_re')!==-1){
-		var site = string.substring(9);
+		var site = string.substring(9,string.length-1);
 		console.log(site);
-		//relocate_url(site);
+		relocate_url(site);
 	}
 })
 </script>
