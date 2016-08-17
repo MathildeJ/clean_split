@@ -71,12 +71,8 @@
     </header>
 
    <!-- find out how to put the iframe on top of the rest of the page so it looks like a popup -->
-   <div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" align='center'></iframe></div>
+   <div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" align='center' style="visibility:hidden"></iframe></div>
   
-   <script>
-      document.getElementById("popupWindow").style.visibility = 'hidden';
-   </script>
-
    <script>
     function showLink() {
        document.getElementById("popupWindow").style.visibility = 'visible';
