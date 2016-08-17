@@ -18,12 +18,11 @@ window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
     if (init.success) {
       if(!Surfly.currentSession){
-	      Surfly.session({url: 'https://google.com'})
+	      Surfly.session()
 		.on('session_started', function(session) {
 		       // get the session id from the follower link
 			var followerLink = session.followerLink;
 			var linkIndex = followerLink.indexOf(".com");
-			// store the ID
 			var sessionID = followerLink.substring(linkIndex+4, linkIndex+16);
 			// get the page url
 			var pageUrl = document.location.href;
@@ -33,8 +32,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			// append the page url to the session id
 			var res = fullPageUrl.concat('/splitscreen', sessionID);
  
-			 //console.log('the link you need to open is :', res);
-			 window.top.postMessage("link to open: " + res, "*");
+			window.top.postMessage("link to open: " + res, "*");
 	      })
 		.on('message', function(session, event) {
 			var info = JSON.stringify(event.data);
@@ -44,9 +42,6 @@ window.addEventListener('DOMContentLoaded', function() {
 				window.top.postMessage(link,'*');
 			}
 	     })
-		.on('viewer_joined', function(session){
-			window.top.postMessage('you can now make the button visible','*');
-	     }).startLeader();
 	} 
      }
    });
@@ -58,17 +53,16 @@ window.addEventListener('DOMContentLoaded', function() {
 <body>
 <script>
 window.addEventListener('message', function(e){
-	console.log(e.data);
-	console.log(typeof e.data);
+	//console.log(e.data);
+	//console.log(typeof e.data);
 	var string = JSON.stringify(e.data);
-	console.log(string);
+	//console.log(string);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-	       		console.log("link? ", string);
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
-			console.log("flink "+flink);
+			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
 	}

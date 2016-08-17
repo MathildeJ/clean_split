@@ -35,11 +35,9 @@ eventer(messageEvent, function (e) {
 		invite.style.visibility = 'visible';
    }
    if(info.indexOf('flink')!==-1){
-	console.log('it worked? ' + e.data);
-	console.log(typeof e.data);
 	var link = e.data.substring(7);
-	console.log('it works? ' + link);
 	if(link.indexOf('\\')){ link = link.substring(0, link.length-1);};
+	console.log('it works? ' + link);
 	document.getElementById('ifrm2').src = link;
 	document.getElementById('invite').style.visibility = 'hidden';
 	document.getElementById('invite_a').style.visibility = 'hidden';

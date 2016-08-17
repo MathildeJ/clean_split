@@ -16,17 +16,21 @@
 <div class="box"><iframe id="ifrm2" src="./third_frame" height="700" width="49%" align='right'></iframe></div>
 
 <script>
+/*
 (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
 l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
 l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 (window,document,'script','Surfly');
+*/
 </script>
 
 <script>
+/*
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
     if (init.success) {
+*/
        // get the current url and the follower link
        pageUrl  = document.location.href;
        var idIndex = pageUrl.indexOf("screen");
@@ -35,9 +39,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
        // set the url of the frame to the follower link
        document.getElementById('ifrm1').src = fullUrl;
+/*
       }
    });
  });
+*/
 
 </script>
 
@@ -51,7 +57,7 @@ eventer(messageEvent, function (e) {
    if (typeof e.data === 'string') { 
      // we use a regex to match the follower link and extract it from the data 
      if (e.data.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-        console.log("the retrieved message from the third frame is ", e.data);
+        //console.log("the retrieved message from the third frame is ", e.data);
 	var theLink = e.data;
 	var frame = document.getElementById('ifrm1').contentWindow;
 	frame.postMessage(JSON.stringify({"command": "message", "data": theLink}), '*');
