@@ -35,14 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
 	      })
-		.on('message', function(session, event) {
-			var info = JSON.stringify(event.data);
-			if(info.indexOf('null')==-1){
-				var index = info.indexOf('https')
-				var link = info.substring(index, info.length-3);
-				window.top.postMessage(link,'*');
-			}
-	     }).startLeader();
+              .startLeader();
 	} 
      }
    });
@@ -57,13 +50,11 @@ window.addEventListener('DOMContentLoaded', function() {
 <script>
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	//console.log(string);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
-			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
 	}
