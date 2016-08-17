@@ -1,0 +1,22 @@
+<head>
+</head>
+<body>
+
+<a id="invite_a" style="visibility:hidden">Invite link</a>
+
+<script>
+var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+var eventer = window[eventMethod];
+var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+// Listen to message from child IFrame window
+eventer(messageEvent, function (e) {
+   var info = JSON.stringify(e.data);
+
+   if(info.indexOf('link to open')!==-1){
+	// we extract the link from the data 
+	var invite = document.getElementById('invite_a');
+	invite.href = e.data.substring(14);
+	invite.style.visibility = 'visible';
+   }, false);
+</script>

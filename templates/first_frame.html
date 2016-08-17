@@ -8,6 +8,9 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.min.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.css') }}">
 
+    <!-- stylesheet -->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='first_frame.css') }}">
+
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -40,7 +43,7 @@
 				// append the page url to the session id
 				var res = fullPageUrl.concat('/splitscreen', sessionID);
 
-				// send the link to the parent page
+				// send the link to the top page (popup)
 				window.top.postMessage("link to open: " + res, "*");
 		      })
 		      .startLeader();
@@ -56,7 +59,7 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">Invite a friend to join you!</h1>
+                <h1 id="homeHeading">Invite a friend!</h1>
                 <hr>
                 <p>Click on the link below to invite someone to join your splitscreen session</p>
                 <a href="./popup_link" class="btn btn-primary btn-xl page-scroll">Invite!</a>
@@ -73,7 +76,7 @@
 				var index = string.indexOf('https');
 				var indexEnd = string.indexOf('origin');	
 				var flink = string.substring(index, indexEnd-4);
-		                // post the follower link to the top window
+		                // post the follower link to the top window -> find out how to post this to the popup instead
 				window.top.postMessage('flink: ' + flink , '*' );
 			}
 		}
