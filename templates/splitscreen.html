@@ -44,14 +44,6 @@ eventer(messageEvent, function (e) {
 	document.getElementById('invite').style.visibility = 'hidden';
 	document.getElementById('invite_a').style.visibility = 'hidden';
    }
-
-   if(info.indexOf('relocate:')!==-1){
-	var link = e.data.substring(10);
-	console.log('it works? ' + link);
-	var frame = document.getElementById('ifrm1').contentWindow;
-	frame.postMessage(JSON.stringify({"command": "message", "data": link}), '*'); 
-	frame.postMessage('test', '*');
-   }
 }, false);
 </script>
 
