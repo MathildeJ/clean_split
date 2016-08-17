@@ -49,12 +49,14 @@ window.addEventListener('DOMContentLoaded', function() {
 </p>
 <script>
 window.addEventListener('message', function(e){
+        // listen for the follower link 
 	var string = JSON.stringify(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
+                        // post the follower link to the top window
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
 	}
