@@ -13,6 +13,8 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 </script>
 
 <script>
+var url;
+
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
@@ -39,10 +41,20 @@ window.addEventListener('DOMContentLoaded', function() {
 			//var nav_bar = document.getElementById('url');
 			//nav_bar.style.visibility = 'visible';
 	      }).startLeader();
-	} 
+	} else {
+		if(url){
+			console.log('ok');
+			Surfly.currentSession.relocate(url);
+		}
+	}
      }
    });
  });
+
+function relocate(){
+	url = document.getElementById('url').value;
+	console.log(url);
+}
 </script>
 
 </head>
@@ -59,13 +71,6 @@ window.addEventListener('DOMContentLoaded', function() {
         </label>
 </form>
 
-<script>
-function relocate(){
-	var url = document.getElementById('url').value;
-	console.log(url);
-	Surfly.currentSession.relocate(url);
-}
-</script>
 
 <script>
 window.addEventListener('message', function(e){
