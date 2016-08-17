@@ -39,8 +39,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			// nav bar
-			var form = document.getElementById('form_wrapper');
-			form.style.visibility = 'visible';
+			//var form = document.getElementById('form_wrapper');
+			//form.style.visibility = 'visible';
 	      	}).startLeader();
 	} else {
 		console.log(Surfly.currentSession);
@@ -62,7 +62,7 @@ function relocate(){
 </head>
 
 <body>
-<div id="form_wrapper" style="visibility:hidden;">
+<div id="form_wrapper" style="visibility:visible;">
 <form id="nav" action="" method="post">
 	<h3 class="text-title">Nav bar</h3>
         <label>
@@ -88,11 +88,6 @@ window.addEventListener('message', function(e){
 			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
-	}
-
-	if(string.indexOf('test')){
-		console.log(string);
-		console.log(Surfly.currentSession);
 	}
 })
 </script>
