@@ -38,6 +38,7 @@ eventer(messageEvent, function (e) {
 	console.log('it worked? ' + e.data);
 	console.log(typeof e.data);
 	var link = e.data;
+	if(link.indexOf('\\')){ link = link.substring(0, link.length-1);};
 	document.getElementById('ifrm2').src = link;
 	document.getElementById('invite').style.visibility = 'hidden';
 	document.getElementById('invite_a').style.visibility = 'hidden';
