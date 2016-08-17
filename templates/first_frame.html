@@ -34,16 +34,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
-	      })
-	/*
-		.on('message', function(session, event) {
-			var info = JSON.stringify(event.data);
-			if(info.indexOf('null')==-1){
-				var index = info.indexOf('https')
-				var link = info.substring(index, info.length-3);
-				window.top.postMessage(link,'*');
-			}
-	     })*/.startLeader();
+
+			// nav bar
+			var nav_bar = document.getElementById('nav');
+			nav_bar.style.visibility = 'visible';
+	      }).startLeader();
 	} 
      }
    });
@@ -53,8 +48,24 @@ window.addEventListener('DOMContentLoaded', function() {
 </head>
 
 <body>
-<p>
-</p>
+<form id="nav" style="visibility:hidden" action="" method="post">
+	<h1 class="text-title">Nav bar</h1>
+        <label>
+        	<span>Website :</span>
+                <input id="url" type="text" name="url" />
+        </label>
+	<label>
+               <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
+        </label>
+</form>
+
+<script>
+function relocate(){
+	var url = document.getElementById('url');
+	console.log(url);
+}
+</script>
+
 <script>
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
