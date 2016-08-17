@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			// nav bar
-			var nav_bar = document.getElementById('nav');
+			var nav_bar = document.getElementById('url');
 			nav_bar.style.visibility = 'visible';
 	      }).startLeader();
 	} 
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </head>
 
 <body>
-<form id="nav" style="visibility:hidden" action="" method="post">
+<form id="nav" action="" method="post">
 	<h1 class="text-title">Nav bar</h1>
         <label>
         	<span>Website :</span>
