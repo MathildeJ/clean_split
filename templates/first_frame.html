@@ -66,8 +66,8 @@ window.addEventListener('message', function(e){
        		console.log("link? ", string);
 		var index = string.indexOf('https');
 		var indexEnd = string.indexOf('origin');	
-		console.log("flink "+string.substring(index, indexEnd-4));
 		var flink = string.substring(index, indexEnd-4);
+		console.log("flink "+flink);
 		window.top.postMessage('flink: ' + flink , '*' );
 	}
 })

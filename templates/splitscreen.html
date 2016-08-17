@@ -36,7 +36,9 @@ eventer(messageEvent, function (e) {
    }
    if(info.indexOf('flink')!==-1){
 	console.log('it worked? ' + e.data);
-	document.getElementById('ifrm2').src = e.data;
+	console.log(typeof e.data);
+	var link = e.data;
+	document.getElementById('ifrm2').src = link;
 	document.getElementById('invite').style.visibility = 'hidden';
 	document.getElementById('invite_a').style.visibility = 'hidden';
    }
