@@ -35,6 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
 	      })
+	/*
 		.on('message', function(session, event) {
 			var info = JSON.stringify(event.data);
 			if(info.indexOf('null')==-1){
@@ -42,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				var link = info.substring(index, info.length-3);
 				window.top.postMessage(link,'*');
 			}
-	     }).startLeader();
+	     })*/.startLeader();
 	} 
      }
    });

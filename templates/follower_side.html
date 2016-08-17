@@ -33,6 +33,7 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
+// check origin
    if (typeof e.data === 'string') { 
      // we use a regex to match the follower link and extract it from the data 
      if (e.data.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
