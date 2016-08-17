@@ -12,7 +12,7 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
-
+   console.log("the iframe recieves the message ", e.data);
    if(info.indexOf('link to open')!==-1){
 	// we extract the link from the data 
 	var invite = document.getElementById('invite_a');

@@ -65,12 +65,12 @@
                 <h1 id="homeHeading">Invite a friend!</h1>
                 <hr>
                 <p>Click on the link below to invite someone to join your splitscreen session</p>
-                <!-- <a href="{{ url_for('popup_link') }}" class="btn btn-primary btn-xl page-scroll">Invite!</a> -->
                 <button class="btn btn-primary btn-xl page-scroll" onclick="showLink()">Invite!</button>
             </div>
         </div>
     </header>
 
+   <!-- find out how to put the iframe on top of the rest of the page so it looks like a popup -->
    <div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" align='center'></iframe></div>
   
    <script>
