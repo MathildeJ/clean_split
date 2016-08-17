@@ -87,8 +87,8 @@ window.addEventListener('message', function(e){
 		}
 	}
 	
-	if(string.indexOf('test_re')){
-		var site = string.substring(8);
+	if(string.indexOf('test_re')!==-1){
+		var site = string.substring(9);
 		console.log(site);
 		//relocate_url(site);
 	}
