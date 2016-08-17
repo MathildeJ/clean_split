@@ -63,7 +63,7 @@ function relocate(){
 	sessionStorage.setItem('test', url);
 	//console.log(url);
 	//Surfly.session().relocate(url);
-	Surfly.currentSession.sendMessage({foo: 'hello'}, '*');
+	Surfly.currentSession.sendMessage({foo: 'hello' + url}, '*');
 	
 }
 </script>
