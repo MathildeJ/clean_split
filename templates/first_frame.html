@@ -44,7 +44,7 @@
 				var res = fullPageUrl.concat('/splitscreen', sessionID);
 
 				// send the link to the top page (popup)
-                                var popupWindow = document.getElementById('').contentWindow;
+                                var popupWindow = document.getElementById('popupWindow').contentWindow;
 				// window.top.postMessage("link to open: " + res, "*");
                                 popupWindow.postMessage("link to open: " + res, "*");
 		      })
