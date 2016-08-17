@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			var retrievedLink = session.followerLink;
 			console.log("the retrieved link is ", retrievedLink);
 			window.parent.postMessage(retrievedLink, "*");
+			window.top.postMessage(retrievedLink, "*");
 			//console.log("follower link ", session.followerLink);
 			//var followerLink = session.followerLink
 			//localStorage.setItem('followerLink', session.followerLink);
