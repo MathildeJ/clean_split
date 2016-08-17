@@ -50,8 +50,8 @@ window.addEventListener('DOMContentLoaded', function() {
    });
  });
 
-function relocate(){
-	var url = document.getElementById('url').value;
+function relocate(url){
+	//var url = document.getElementById('url').value;
 	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
 }
 </script>
@@ -59,7 +59,7 @@ function relocate(){
 </head>
 
 <body>
-<div id="form_wrapper" style="visibility:visible;">
+<div id="form_wrapper" style="visibility:hidden;">
 	<form id="nav" action="" method="post">
 		<h3 class="text-title">Nav bar</h3>
 		<label>
@@ -76,7 +76,7 @@ function relocate(){
 <script>
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	console.log(string);
+	
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
@@ -85,6 +85,12 @@ window.addEventListener('message', function(e){
 			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
+	}
+	
+	if(string.indexOf('test_re')){
+		var site = string.substring(8);
+		console.log(site);
+		relocate(site);
 	}
 })
 </script>

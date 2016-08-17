@@ -31,7 +31,8 @@
 
 <script>
 function sendMess(){
-	document.getElementById('ifrm1').contentWindow.postMessage('hellotest', '*');	
+	var url = document.getElementById('url').value;
+	document.getElementById('ifrm1').contentWindow.postMessage('test_re:'+url, '*');	
 }
 </script>
 
