@@ -49,7 +49,7 @@ eventer(messageEvent, function (e) {
 	var link = e.data.substring(10);
 	console.log('it works? ' + link);
 	var frame = document.getElementById('ifrm1').contentWindow;
-	//frame.postMessage(JSON.stringify({"command": "message", "data": link}), '*'); 
+	frame.postMessage(JSON.stringify({"command": "message", "data": link}), '*'); 
 	frame.postMessage('test', '*');
    }
 }, false);
