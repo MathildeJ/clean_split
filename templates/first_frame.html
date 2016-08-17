@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		    var new_url = JSON.stringify(event.data);
 		    console.log(new_url);	
 		    if(new_url.indexOf('url')){
-			var site = new_url.substring(12);
+			var site = new_url.substring(12, new_url.length-2);
 			console.log("yes " + site);
 			Surfly.currentSession.relocate(site);
 			
@@ -62,8 +62,8 @@ function relocate(){
 	url = document.getElementById('url').value;
 	//sessionStorage.setItem('test', url);
 	//console.log(url);
-	//Surfly.session().relocate(url);
 	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
+	Surfly.currentSession.relocate(url);
 	
 }
 </script>
