@@ -47,8 +47,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		    var new_url = JSON.stringify(event.data);
 		    console.log(new_url);	
 		    if(new_url.indexOf('url')){
-			var site = new_url.substring(4);
+			var site = new_url.substring(12);
 			console.log("yes " + site);
+			Surfly.currentSession.relocate(site);
+			
 		    }
 		}).startLeader();
 	}
