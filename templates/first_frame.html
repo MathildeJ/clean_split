@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
     if (init.success) {
       if(!Surfly.currentSession){
-	      Surfly.session()
+	      Surfly.session({url: 'https://google.com'})
 		.on('session_started', function(session) {
 		       // get the session id from the follower link
 			var followerLink = session.followerLink;
@@ -31,7 +31,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 			// append the page url to the session id
 			var res = fullPageUrl.concat('/splitscreen', sessionID);
- 
+
+			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
 	      })
 		.on('message', function(session, event) {
@@ -41,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				var link = info.substring(index, info.length-3);
 				window.top.postMessage(link,'*');
 			}
-	     })
+	     }).startLeader();
 	} 
      }
    });
@@ -53,8 +54,6 @@ window.addEventListener('DOMContentLoaded', function() {
 <body>
 <script>
 window.addEventListener('message', function(e){
-	//console.log(e.data);
-	//console.log(typeof e.data);
 	var string = JSON.stringify(e.data);
 	//console.log(string);
 	if(string.indexOf('cobro_event')){
