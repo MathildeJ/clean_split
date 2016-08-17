@@ -40,7 +40,11 @@ window.addEventListener('DOMContentLoaded', function() {
 			// nav bar
 			//var nav_bar = document.getElementById('url');
 			//nav_bar.style.visibility = 'visible';
-	      }).startLeader();
+	      })
+		.on('message', function(session, event) {
+			var info = JSON.stringify(event.data);
+			console.log("test message Surfly 1st frame" + event.data);
+	     }).startLeader();
 	} 
      }
    });
