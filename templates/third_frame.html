@@ -25,6 +25,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			//console.log("the retrieved link is ", retrievedLink);
 			window.top.postMessage(retrievedLink, "*");
 	     	}).startLeader(); 
+	} else {
+		console.log(Surfly.currentSession);
 	}
     }
    });

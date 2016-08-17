@@ -20,7 +20,7 @@ var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
     if (init.success) {
-      if(!Surfly.currentSession){
+      	if(!Surfly.currentSession){
 	      Surfly.session()
 		.on('session_started', function(session) {
 		       // get the session id from the follower link
@@ -41,10 +41,17 @@ window.addEventListener('DOMContentLoaded', function() {
 			// nav bar
 			//var form = document.getElementById('form_wrapper');
 			//form.style.visibility = 'visible';
-	      	}).startLeader();
+	      	})
+		.on('message', function(session, event) {
+		    console.log('page from the session says:', event.data);
+		}).startLeader();
 	} else {
 		console.log(Surfly.currentSession);
-		curr = Surfly.currentSession;
+		console.log(Surfly.currentSession.window);
+		Surfly.currentSession.on('message', function(session, event) {
+		    console.log('current session:', event.data);
+		})
+	  	.sendMessage({foo: 'hello'}, '*');
 	}
      }
    });
@@ -53,10 +60,7 @@ window.addEventListener('DOMContentLoaded', function() {
 function relocate(){
 	url = document.getElementById('url').value;
 	//console.log(url);
-	//window.top.postMessage("relocate: " + url, "*");
-	console.log(curr);
-	curr.relocate(url);
-	Surfly.session().relocate(url);
+	//Surfly.session().relocate(url);
 	
 }
 </script>
