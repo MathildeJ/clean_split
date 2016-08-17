@@ -44,15 +44,13 @@ window.addEventListener('DOMContentLoaded', function() {
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
+		    var new_url = JSON.stringify(event.data);
+		    console.log(new_url);	
+		    if(new_url.indexOf('url')){
+			var site = new_url.substring(4);
+			console.log("yes " + site);
+		    }
 		}).startLeader();
-	} else {
-		Surfly.currentSession.on('message', function(session, event) {
-		    console.log('current session:', event.data);
-		})
-	  	//.sendMessage({foo: 'hello'}, '*');
-
-		if(url){console.log('ok')};
-		if(sessionStorage.getItem('test')){console.log('okay')};
 	}
      }
    });
@@ -60,10 +58,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function relocate(){
 	url = document.getElementById('url').value;
-	sessionStorage.setItem('test', url);
+	//sessionStorage.setItem('test', url);
 	//console.log(url);
 	//Surfly.session().relocate(url);
-	Surfly.currentSession.sendMessage({foo: 'hello' + url}, '*');
+	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
 	
 }
 </script>
