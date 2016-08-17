@@ -50,10 +50,12 @@ window.addEventListener('DOMContentLoaded', function() {
    });
  });
 
-function relocate_url(url){
-	//var url = document.getElementById('url').value;
+/*
+function relocate_url(){
+	var url = document.getElementById('url').value;
 	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
 }
+*/
 </script>
 
 </head>
@@ -67,13 +69,20 @@ function relocate_url(url){
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
+		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate_url() value="Go!" />
 		</label>
 	</form>
 </div>
 
 
 <script>
+var url;
+
+function relocate_url(){
+	//var url = document.getElementById('url').value;
+	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
+}
+
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
 	
@@ -90,10 +99,11 @@ window.addEventListener('message', function(e){
 	if(string.indexOf('test_re')!==-1){
 		var site = string.substring(9,string.length-1);
 		console.log(site);
-		var s_frame = document.getElementById('surfly-iframe').contentWindow;
-
-		s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		//relocate_url(site);
+		url = site;
+		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
+		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
+		
+		relocate_url();
 	}
 })
 </script>
