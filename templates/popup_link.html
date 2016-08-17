@@ -2,6 +2,7 @@
 </head>
 <body>
 <p>Copy-paste the link below to share with a friend!</p>
+<div id="invite" style="visibility:hidden">Invite link</div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
 <script>
@@ -15,7 +16,10 @@ eventer(messageEvent, function (e) {
    console.log("the iframe recieves the message ", e.data);
    if(info.indexOf('link to open')!==-1){
 	// we extract the link from the data 
+        var invite_link = document.getElementById('invite');
 	var invite = document.getElementById('invite_a');
+	invite_link.innerHTML = e.data;
+	invite_link.style.visibility = 'visible';
 	invite.href = e.data.substring(14);
 	invite.style.visibility = 'visible';
    }
