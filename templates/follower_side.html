@@ -53,9 +53,10 @@ eventer(messageEvent, function (e) {
      if (e.data.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
        console.log("the retrieved message from the third frame is ", e.data);
 
+	var theLink = e.data;
 	// we store the new follower link
 	var frame = document.getElementById('ifrm1').contentWindow;
-	frame.postMessage({"command": "message", "data": "<data>"}, '*');
+	frame.postMessage({"command": "message", "data": theLink}, '*');
        //localStorage.setItem("theFollowerLink", e.data);
      }
    }
