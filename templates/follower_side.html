@@ -56,7 +56,7 @@ eventer(messageEvent, function (e) {
 	var theLink = e.data;
 	// we store the new follower link
 	var frame = document.getElementById('ifrm1').contentWindow;
-	frame.postMessage({"command": "message", "data": theLink}, '*');
+	frame.postMessage({"command": "message", "data": "<data>"}, '*');
        //localStorage.setItem("theFollowerLink", e.data);
      }
    }
