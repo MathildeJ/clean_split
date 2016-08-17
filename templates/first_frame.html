@@ -55,6 +55,7 @@ function relocate(){
 	//console.log(url);
 	//window.top.postMessage("relocate: " + url, "*");
 	console.log(curr);
+	curr.relocate(url);
 	
 }
 </script>
@@ -63,16 +64,16 @@ function relocate(){
 
 <body>
 <div id="form_wrapper" style="visibility:visible;">
-<form id="nav" action="" method="post">
-	<h3 class="text-title">Nav bar</h3>
-        <label>
-        	<span>Website :</span>
-                <input id="url" type="text" name="url" />
-        </label>
-	<label>
-               <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
-        </label>
-</form>
+	<form id="nav" action="" method="post">
+		<h3 class="text-title">Nav bar</h3>
+		<label>
+			<span>Website :</span>
+		        <input id="url" type="text" name="url" />
+		</label>
+		<label>
+		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
+		</label>
+	</form>
 </div>
 
 
