@@ -11,3 +11,8 @@ header {
 #homeHeading {
   color: white;
 }
+
+#popupWindow {
+    z-index: 20;
+    position: absolute;
+}
