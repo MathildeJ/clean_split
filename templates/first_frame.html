@@ -36,8 +36,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			// nav bar
-			var nav_bar = document.getElementById('url');
-			nav_bar.style.visibility = 'visible';
+			//var nav_bar = document.getElementById('url');
+			//nav_bar.style.visibility = 'visible';
 	      }).startLeader();
 	} 
      }
@@ -63,6 +63,7 @@ window.addEventListener('DOMContentLoaded', function() {
 function relocate(){
 	var url = document.getElementById('url').value;
 	console.log(url);
+	Surfly.currentSession.relocate(url);
 }
 </script>
 
