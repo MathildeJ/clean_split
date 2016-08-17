@@ -26,17 +26,20 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
+
    if(info.indexOf('link to open')!==-1){
-		var invite_link = document.getElementById('invite');
-		var invite = document.getElementById('invite_a');
-		invite_link.innerHTML = e.data;
-		invite_link.style.visibility = 'visible';
-		invite.href = e.data.substring(14);
-		invite.style.visibility = 'visible';
+	// if we re
+	var invite_link = document.getElementById('invite');
+	var invite = document.getElementById('invite_a');
+	invite_link.innerHTML = e.data;
+	invite_link.style.visibility = 'visible';
+	invite.href = e.data.substring(14);
+	invite.style.visibility = 'visible';
    }
+
    if(info.indexOf('flink')!==-1){
 	var link = e.data.substring(7);
-	if(link.indexOf('\\')){ link = link.substring(0, link.length-1);};
+	if(link.indexOf('\\')){ link = link.substring(0, link.length);};
 	console.log('it works? ' + link);
 	document.getElementById('ifrm2').src = link;
 	document.getElementById('invite').style.visibility = 'hidden';
