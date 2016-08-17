@@ -50,18 +50,18 @@ window.addEventListener('DOMContentLoaded', function() {
    });
  });
 
-/*
-function relocate_url(){
+
+function relocate(){
 	var url = document.getElementById('url').value;
 	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
 }
-*/
+
 </script>
 
 </head>
 
 <body>
-<div id="form_wrapper" style="visibility:hidden;">
+<div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<h3 class="text-title">Nav bar</h3>
 		<label>
@@ -69,7 +69,7 @@ function relocate_url(){
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate_url() value="Go!" />
+		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
 		</label>
 	</form>
 </div>
