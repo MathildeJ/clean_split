@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	    	Surfly.session()
 		.on('session_started', function(session) {
 			var retrievedLink = session.followerLink;
-			//console.log("the retrieved link is ", retrievedLink);
+                        // post the follower link to the top window
 			window.top.postMessage(retrievedLink, "*");
 	     	}).startLeader(); 
 	}
