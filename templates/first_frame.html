@@ -66,14 +66,20 @@
                 <hr>
                 <p>Click on the link below to invite someone to join your splitscreen session</p>
                 <!-- <a href="{{ url_for('popup_link') }}" class="btn btn-primary btn-xl page-scroll">Invite!</a> -->
-                <button class="btn btn-primary btn-xl page-scroll">Invite!</button>
+                <button class="btn btn-primary btn-xl page-scroll" onclick="showLink()">Invite!</button>
             </div>
         </div>
     </header>
 
-<div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" align='center'></iframe></div>
+   <div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" align='center'></iframe></div>
 
-    <script>
+   <script>
+    function showLink() {
+       document.getElementById("popupWindow").style.visibility = visible;
+    }
+   </script>
+
+   <script>
 	window.addEventListener('message', function(e){
 		// listen for the follower link 
 		var string = JSON.stringify(e.data);
