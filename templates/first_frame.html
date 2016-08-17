@@ -61,11 +61,14 @@ window.addEventListener('message', function(e){
 	//console.log(e.data);
 	//console.log(typeof e.data);
 	//var string = JSON.stringify(e.data);
-	if (e.data.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
+	var info = e.data;
+	if (info.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
        		console.log("link? ", e.data);
-		var index = e.data.indexOf('https');
-		var index = e.data.indexOf('origin');	
-		console.log("link "+e.data.substring(index, indexEnd-3));
+		var string = JSON.stringify(e.data);
+		console.log('string '+string);
+		var index = string.indexOf('https');
+		var index = string.indexOf('origin');	
+		console.log("link "+string.substring(index, indexEnd-3));
 	}
 })
 </script>
