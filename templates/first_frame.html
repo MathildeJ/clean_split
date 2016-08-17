@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<script>
+(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
+(window,document,'script','Surfly');
+</script>
+
+<script>
+var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a'};
+window.addEventListener('DOMContentLoaded', function() {
+  Surfly.init(settings, function(init) {
+    if (init.success) {
+      if(!Surfly.currentSession){
+	      Surfly.session({url: 'https://google.com'})
+		.on('session_started', function(session) {
+		       // get the session id from the follower link
+			var followerLink = session.followerLink;
+			var linkIndex = followerLink.indexOf(".com");
+			// store the ID
+			var sessionID = followerLink.substring(linkIndex+4, linkIndex+16);
+			// get the page url
+			var pageUrl = document.location.href;
+			var pageIndex = pageUrl.indexOf("https");
+			var pageEnd = pageUrl.indexOf("first_frame");
+			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
+			// append the page url to the session id
+			var res = fullPageUrl.concat('/splitscreen', sessionID);
+ 
+			 //console.log('the link you need to open is :', res);
+			 window.top.postMessage("link to open: " + res, "*");
+	      })
+		.on('message', function(session, event) {
+			var info = JSON.stringify(event.data);
+			if(info.indexOf('null')==-1){
+				var index = info.indexOf('https')
+				var link = info.substring(index, info.length-3);
+				window.top.postMessage(link,'*');
+			}
+	     })
+		.on('viewer_joined', function(session){
+			window.top.postMessage('you can now make the button visible','*');
+	     }).startLeader();
+	} 
+     }
+   });
+ });
+</script>
+
+</head>
+
+<body>
+
+
+</body>
+</html> 

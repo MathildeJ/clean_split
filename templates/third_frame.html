@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<script>
+(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
+(window,document,'script','Surfly');
+</script>
+
+<script>
+
+var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, docked_only: true};
+window.addEventListener('DOMContentLoaded', function() {
+  Surfly.init(settings, function(init) {
+    if (init.success) {
+	if(!Surfly.currentSession){
+	    	Surfly.session()
+		.on('session_started', function(session) {
+			var retrievedLink = session.followerLink;
+			console.log("the retrieved link is ", retrievedLink);
+			window.parent.postMessage(retrievedLink, "*");
+			//console.log("follower link ", session.followerLink);
+			//var followerLink = session.followerLink
+			//localStorage.setItem('followerLink', session.followerLink);
+	     	}).startLeader(); 
+	}
+    }
+   });
+ });
+
+</script>
+
+</head>
+
+<body>
+
+<p> Hello! This is the 3rd frame! </p>
+
+</body>
+</html>
