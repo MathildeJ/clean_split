@@ -61,12 +61,14 @@ window.addEventListener('message', function(e){
 	//console.log(e.data);
 	//console.log(typeof e.data);
 	var string = JSON.stringify(e.data);
-	//console.log(string);
+	console.log(string);
 	if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
        		console.log("link? ", string);
 		var index = string.indexOf('https');
 		var indexEnd = string.indexOf('origin');	
 		console.log("flink "+string.substring(index, indexEnd-3));
+		var flink = string.substring(index, indexEnd-3);
+		window.top.postMessage('flink: ' + flink , '*' );
 	}
 })
 </script>
