@@ -1,6 +1,3 @@
-header {
-  background-image: url("../static/sunset.jpg");
-}
 
 #bu {
   background-color: #ea2020;
@@ -17,6 +14,3 @@ header {
     position: absolute;
 }
 
-.page-image {
-    background-image: url("../static/sunset.jpg");
-}
