@@ -15,6 +15,7 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 <script>
 var sess;
 var test;
+var testest;
 
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
@@ -54,8 +55,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		    }
 		}).startLeader();
 	} else {
-		Surfly.currentSession.on('message', function(session, event) {
+		Surfly.currentSession.on('message', function(session, event) {	
 		    console.log('page curr sess: ', event.data);
+		    console.log(this);
 		    var new_url = JSON.stringify(event.data);
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
@@ -64,8 +66,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			//session.sendMessage({url: 'url:' + site}, '*');
 			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
 			//this.relocate(site);
+			testest = Surfly.currentSession;
 		    }
-		}).sendMessage({url: 'testest'}, '*');
+		})
 	}
      }
    });
@@ -84,7 +87,8 @@ function relocate_url(url){
 	//console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');	
 	//test.sendMessage({url: 'url:' + url}, '*');
-	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');
+	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');
+	if(testest){console.log("ok testest"); testest.sendMessage({url: 'url:' + url}, '*');};
 	//sess.relocate(url);	
 }
 
