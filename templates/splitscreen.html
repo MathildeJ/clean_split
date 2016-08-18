@@ -36,11 +36,11 @@ window.addEventListener('DOMContentLoaded', function() {
 			var res = pageUrl.concat(sessionID);
 
 		        var invite_link = document.getElementById('invite');
-			var invite = document.getElementById('invite_a');
+			//var invite = document.getElementById('invite_a');
 			invite_link.innerHTML = res;
 			invite_link.style.visibility = 'visible';
-			invite.href = res;
-			invite.style.visibility = 'visible';
+			//invite.href = res;
+			//invite.style.visibility = 'visible';
 
 			document.getElementById('exit_button').style.visibility="visible";
 
@@ -70,7 +70,7 @@ window.addEventListener('message', function(e){
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
 			document.getElementById('ifrm2').src = flink;
 			document.getElementById('invite').style.visibility = 'hidden';
-			document.getElementById('invite_a').style.visibility = 'hidden';
+			//document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
 })
@@ -87,9 +87,8 @@ body {
 
 #exit_button {
 	position: relative;
-
 	background-color: #ea2020;
-	border: 1px solid black;
+	border: 2px solid black;
 	color: black;
 	padding: 3px 7px;
 	text-align: center;
@@ -98,16 +97,14 @@ body {
 	font-size: 16px;
 	margin: 0 auto;
 	cursor: pointer;
-        width: 8%;
-	height: 20px;
+        width: 9%;
+	height: 25px;
 	margin-top: 5px;
 	margin-right: 5px;
         font-weight: bold;
-	border-radius: 6px;
+	border-radius: 8px;
 }
 
-span{
-}
 
 form{
 	position: relative;
@@ -137,6 +134,13 @@ form{
 #submit_button{
 	border: 1px solid black;
 	font-weight: bold;
+	background-color: #ED4337;
+}
+
+#invite{
+}
+
+#title_bar{
 }
 </style>
 
@@ -150,7 +154,7 @@ form{
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<label>
-			<span>Nav bar :</span>
+			<h3 id="title_bar">Nav bar :</h3>
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
