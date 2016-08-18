@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			var retrievedLink = session.followerLink;
 			var frame = document.getElementById('ifrm1').contentWindow;
 			// we send the link to the first frame (where a Surfly session is already started)
-			frame.postMessage(JSON.stringify({"command": "message", "data": theLink}), '*');
+			frame.postMessage(JSON.stringify({"command": "message", "data": retrievedLink}), '*');
 	     	}).startLeader('#ifrm2'); 
 	}
     }
