@@ -35,6 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			var res = pageUrl.concat(sessionID);
 		        var invite_link = document.getElementById('invite');
 			var invite = document.getElementById('invite_a');
+                        // display the invite link
 			invite_link.innerHTML = res;
 			invite_link.style.visibility = 'visible';
 			invite.href = res;
@@ -51,12 +52,15 @@ function sendMess(){
 }
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
+        console.log("the source sending a message to splitscreen is ", e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
+                        // extract the follower link from the message 
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
+                        // set the source of the second iframe to the follower link
 			document.getElementById('ifrm2').src = flink;
 			document.getElementById('invite').style.visibility = 'hidden';
 			document.getElementById('invite_a').style.visibility = 'hidden';
@@ -69,6 +73,7 @@ window.addEventListener('message', function(e){
 
 <body>
 
+<!-- navbar -->
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<h4 class="text-title">Nav bar</h4>
@@ -82,9 +87,11 @@ window.addEventListener('message', function(e){
 	</form>
 </div>
 
+<!-- display the links at the top of the page -->
 <div id="invite" style="visibility:hidden">Invite link</div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
+<!-- the two iframes -->
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
 
