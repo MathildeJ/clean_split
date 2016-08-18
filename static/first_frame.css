@@ -1,16 +1,5 @@
-
-#bu {
-  background-color: #ea2020;
-  border-color: black;
-  border-width: medium;
-}
-
 #homeHeading {
   color: white;
 }
 
-#popupWindow {
-    z-index: 20;
-    position: absolute;
-}
 
