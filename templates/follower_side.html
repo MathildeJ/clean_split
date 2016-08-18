@@ -31,6 +31,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			// we send the link to the first frame (where a Surfly session is already started)
 			frame.postMessage(JSON.stringify({"command": "message", "data": retrievedLink}), '*');
 			sess = session;
+
+			document.getElementById('exit_button').style.visibility="visible";
 	     	})
 		.on('session_ended', function(session) {
 			document.getElementById('exit_button').style.visibility="hidden";
@@ -49,6 +51,9 @@ function exitSession(){
   sess.end('https://www.surfly.com');
 }
 </script>
+
+<style>
+</style>
 
 </head>
 
