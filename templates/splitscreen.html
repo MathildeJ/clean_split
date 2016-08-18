@@ -36,7 +36,6 @@ function sendMess(){
 	frame.postMessage('test_re:'+url, '*');
 	frame.postMessage(JSON.stringify({"command": "message", "data": "test"}), '*');
 	console.log("src 1st frame: "+ document.getElementById('ifrm1').src);
-	console.log("src Surfly frame: "+ document.getElementById('surfly-iframe').src);
 }
 </script>
 

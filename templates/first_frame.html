@@ -85,7 +85,7 @@ function relocate_url(){
 
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	
+	console.log(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
@@ -102,8 +102,11 @@ window.addEventListener('message', function(e){
 		url = site;
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
 		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
+		console.log("src Surfly frame: "+ document.getElementById('surfly-iframe').src);
 		console.log("curr?" + Surfly.currentSession);
-		relocate_url();
+		console.log("old way?" + window.__surfly);
+		//relocate_url();
+		setTimeout(relocate_url, 2000);
 	}
 })
 </script>
