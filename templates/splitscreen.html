@@ -36,11 +36,11 @@ window.addEventListener('DOMContentLoaded', function() {
 			var res = pageUrl.concat(sessionID);
 
 		        var invite_link = document.getElementById('invite');
-			//var invite = document.getElementById('invite_a');
-			invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
-			invite_link.style.visibility = 'visible';
-			//invite.href = res;
-			//invite.style.visibility = 'visible';
+			var invite = document.getElementById('invite_a');
+			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
+			//invite_link.style.visibility = 'visible';
+			invite.href = res;
+			invite.style.visibility = 'visible';
 
 			document.getElementById('exit_button').style.visibility="visible";
 
@@ -69,8 +69,8 @@ window.addEventListener('message', function(e){
 			var flink = string.substring(index, indexEnd-4);
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
 			document.getElementById('ifrm2').src = flink;
-			document.getElementById('invite').style.visibility = 'hidden';
-			//document.getElementById('invite_a').style.visibility = 'hidden';
+			//document.getElementById('invite').style.visibility = 'hidden';
+			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
 })
@@ -143,6 +143,7 @@ body {
 
 #title_bar{
 	margin: 0 auto;
+	display: inline-block;
 }
 </style>
 
