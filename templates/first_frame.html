@@ -14,6 +14,7 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 
 <script>
 var sess;
+var test;
 
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
@@ -39,6 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 			sess = session;
 			//console.log(this);
+			test = this;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -58,8 +60,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
 			console.log(site);
-			//session.relocate(site);
-			sess.relocate(site);
+			session.relocate(site);
+			Surfly.currentSession.relocate(site);
+			test.relocate(site);
 		    }
 		})
 	}
