@@ -56,6 +56,19 @@
       body {
          background-image: url('../static/sunset.jpg');
       }
+      
+      #inviteButton {
+         background-color: white;
+      }
+    
+      .titleText {
+         color: white;
+      }
+
+      .mainText {
+         color: white;
+      }       
+ 
     </style>
 
 </head>
@@ -65,10 +78,10 @@
 
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>Invite a friend!</h1>
-            <h3>Click below to invite someone to join your splitscreen session</h3>
+            <h1 class="titleText">Invite a friend!</h1>
+            <h3 class="mainText">Click below to invite someone to join your splitscreen session</h3>
             <br>
-            <button class="btn btn-dark btn-lg" onclick="showLink()">Invite!</button>
+            <button id="inviteButton" class="btn btn-dark btn-lg" onclick="showLink()">Invite!</button>
         </div>
     </header>
 
