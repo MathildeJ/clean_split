@@ -31,7 +31,7 @@
 
 <script>
 function sendMess(){
-	console.log('click')'
+	console.log('click');
 	var url = document.getElementById('url').value;
 	var frame = document.getElementById('ifrm1').contentWindow;
 	frame.postMessage('test_re:'+url, '*');
