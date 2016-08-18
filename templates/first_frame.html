@@ -14,8 +14,6 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 
 <script>
 var sess;
-var test;
-var testest;
 
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
@@ -35,12 +33,10 @@ window.addEventListener('DOMContentLoaded', function() {
 			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 			// append the page url to the session id
 			var res = fullPageUrl.concat('/splitscreen', sessionID);
-
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
 
 			sess = session;
-			//test = this;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -48,14 +44,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		    //console.log(new_url);	
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
-			//console.log(session);
-			test = session;
-			testest = this;
 			session.relocate(site);
-			//this.relocate(site);
 			//sess = session;
 		
 		    }
+		})
+		.on('relocated', function(session, event) {
+		    console.log('relocated: ' + event.data);
 		}).startLeader();
 	} else {
 		Surfly.currentSession.on('message', function(session, event) {	
@@ -81,15 +76,10 @@ function relocate(){
 }
 
 function relocate_url(url){
-	console.log('relo');
-	//var url = document.getElementById('url').value;
-	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
+	console.log('relocation');
 	//console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');	
-	test.sendMessage({url: 'url:' + url}, '*');
-	testest.sendMessage({url: 'url:' + url}, '*');
-	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');
-	//sess.relocate(url);	
+	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
 window.addEventListener('message', function(e){
@@ -100,7 +90,6 @@ window.addEventListener('message', function(e){
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
-			//console.log("flink "+flink);
 			window.top.postMessage('flink: ' + flink , '*' );
 		}
 	}
@@ -109,8 +98,8 @@ window.addEventListener('message', function(e){
 		console.log("ok?");
 		var site = string.substring(9,string.length-1);
 		//console.log(site);
-		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
-		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
+		var s_frame = document.getElementById('surfly-iframe').contentWindow;
+		s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
 		relocate_url(site);
 	}
 })
