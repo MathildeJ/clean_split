@@ -45,7 +45,6 @@
 
 				// send the link to the top page (popup)
                                 var popupWindow = document.getElementById('popupWindow').contentWindow;
-				// window.top.postMessage("link to open: " + res, "*");
                                 popupWindow.postMessage("link to open: " + res, "*");
 		      })
 		      .startLeader();
@@ -71,8 +70,9 @@
     </header>
 
    <!-- find out how to put the iframe on top of the rest of the page so it looks like a popup -->
-   <div class="box"><iframe id="popupWindow" src="./popup_link" height="300" width="300" style="visibility:hidden"></iframe></div>
-  
+<iframe id="popupWindow" style="width: 100px; height: 100px; top: 50px;    left: 50px;    display: block;  visibility:hidden;  position: absolute;" src="./popup_link">
+</iframe>
+
    <script>
     function showLink() {
        document.getElementById("popupWindow").style.visibility = 'visible';
