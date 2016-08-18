@@ -88,7 +88,7 @@ function relocate_url(url){
 
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	//console.log(e.data);
+	console.log(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
@@ -127,7 +127,10 @@ window.addEventListener('message', function(e){
 
 
 <script>
-
+window.addEventListener('message', function(e){
+	var string = JSON.stringify(e.data);
+	console.log(e.data);
+})
 </script>
 </body>
 </html> 
