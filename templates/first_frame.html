@@ -78,6 +78,7 @@ function relocate(){
 }
 
 function relocate_url(url){
+	console.log('relo');
 	//var url = document.getElementById('url').value;
 	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
 	//console.log("session?" + sess);
@@ -100,6 +101,7 @@ window.addEventListener('message', function(e){
 	}
 	
 	if(string.indexOf('test_re')!==-1){
+		console.log("ok1?");
 		var site = string.substring(9,string.length-1);
 		//console.log(site);
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
@@ -131,7 +133,7 @@ window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
 	console.log(e.data);
 	if(string.indexOf('test_re:')!==-1){
-		console.log("ok?");
+		console.log("ok2?");
 	}
 })
 </script>
