@@ -49,29 +49,34 @@ window.addEventListener('DOMContentLoaded', function() {
    });
  });
 
+function sendMess(){
+	var url = document.getElementById('url').value;
+	sess.relocate(url);
+	//var frame = document.getElementById('ifrm1').contentWindow;
+	//frame.postMessage('test_re:'+url, '*');
+}
 
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	console.log(e.data);
+
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
-			console.log(flink);
-			//window.top.postMessage('flink: ' + flink , '*' );
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
 			document.getElementById('ifrm2').src = flink;
 			document.getElementById('invite').style.visibility = 'hidden';
 			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
-	
+/*
 	if(string.indexOf('test_re')!==-1){
 		console.log("ok");
 		var site = string.substring(9,string.length-1);
 		sess.relocate(site);
 	}
+*/
 })
 </script>
 
@@ -95,15 +100,6 @@ window.addEventListener('message', function(e){
 
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
-
-<script>
-function sendMess(){
-	var url = document.getElementById('url').value;
-	var frame = document.getElementById('ifrm1').contentWindow;
-	frame.postMessage('test_re:'+url, '*');
-}
-</script>
-
 
 </body>
 
