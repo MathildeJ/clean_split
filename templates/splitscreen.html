@@ -35,7 +35,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			// append the page url to the session id
 			var res = pageUrl.concat(sessionID);
 
-			console.log(res);
 		        var invite_link = document.getElementById('invite');
 			var invite = document.getElementById('invite_a');
 			invite_link.innerHTML = res;
@@ -45,9 +44,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 			sess = session;
 	      	})
-		.on('viewer_joined', function(session){
-                        window.top.postMessage('you can now make the button visible','*');
-             	})
 		.on('message', function(session, event){
                         console.log(event.data);
 			var string = JSON.stringify(event.data);
@@ -60,10 +56,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					console.log(flink);
 				}
 			}
-		}
-	}
-		}
-             	}).startLeader('#ifrm1');
+		}).startLeader('#ifrm1');
 	} 
      }
    });

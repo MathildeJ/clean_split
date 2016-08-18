@@ -25,14 +25,10 @@ window.addEventListener('DOMContentLoaded', function() {
 	    	Surfly.session()
 		.on('session_started', function(session) {
 			var retrievedLink = session.followerLink;
-			//console.log("the retrieved link is ", retrievedLink);
-			//window.top.postMessage(retrievedLink, "*");
 			var frame = document.getElementById('ifrm1').contentWindow;
 			// we send the link to the first frame (where a Surfly session is already started)
 			frame.postMessage(JSON.stringify({"command": "message", "data": theLink}), '*');
 	     	}).startLeader(); 
-	} else {
-		console.log(Surfly.currentSession);
 	}
     }
    });
