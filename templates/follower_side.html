@@ -26,7 +26,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		.on('session_started', function(session) {
 			var retrievedLink = session.followerLink;
 			//console.log("the retrieved link is ", retrievedLink);
-			window.top.postMessage(retrievedLink, "*");
+			//window.top.postMessage(retrievedLink, "*");
+			var frame = document.getElementById('ifrm1').contentWindow;
+			// we send the link to the first frame (where a Surfly session is already started)
+			frame.postMessage(JSON.stringify({"command": "message", "data": theLink}), '*');
 	     	}).startLeader(); 
 	} else {
 		console.log(Surfly.currentSession);
@@ -55,25 +58,7 @@ var fullUrl =  "https://surfly-s1.com".concat(sessionID);
 document.getElementById('ifrm1').src = fullUrl;
 </script>
 
-<script>
-var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-var eventer = window[eventMethod];
-var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
-// Listen to message from child IFrame window
-eventer(messageEvent, function (e) {
-// check origin
-   if (typeof e.data === 'string') { 
-     // we use a regex to match the follower link and extract it from the data 
-     if (e.data.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-	var theLink = e.data;
-	var frame = document.getElementById('ifrm1').contentWindow;
-	// we send the link to the first frame (where a Surfly session is already started)
-	frame.postMessage(JSON.stringify({"command": "message", "data": theLink}), '*');
-     }
-   }
- }, false);
-</script>
 
 </body>
 </html>

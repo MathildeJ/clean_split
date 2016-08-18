@@ -50,6 +50,19 @@ window.addEventListener('DOMContentLoaded', function() {
              	})
 		.on('message', function(session, event){
                         console.log(event.data);
+			var string = JSON.stringify(event.data);
+			if(string.indexOf('cobro_event')){
+				if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
+					console.log('ok');
+					var index = string.indexOf('https');
+					var indexEnd = string.indexOf('origin');	
+					var flink = string.substring(index, indexEnd-4);
+					console.log(flink);
+				}
+			}
+		}
+	}
+		}
              	}).startLeader('#ifrm1');
 	} 
      }
