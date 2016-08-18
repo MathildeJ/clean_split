@@ -13,6 +13,8 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 </script>
 
 <script>
+var sess;
+
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
@@ -42,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
 			session.relocate(site);
-			
+			sess = session;
 		    }
 		}).startLeader();
 	}
@@ -56,6 +58,11 @@ function relocate(){
 	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
+function relocate_url(url){
+	//var url = document.getElementById('url').value;
+	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
+	sess.sendMessage({url: 'url:' + url}, '*');		
+}
 </script>
 
 </head>
@@ -76,16 +83,9 @@ function relocate(){
 
 
 <script>
-var url;
-
-function relocate_url(){
-	//var url = document.getElementById('url').value;
-	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
-}
-
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	console.log(e.data);
+	//console.log(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
@@ -98,15 +98,11 @@ window.addEventListener('message', function(e){
 	
 	if(string.indexOf('test_re')!==-1){
 		var site = string.substring(9,string.length-1);
-		console.log(site);
-		url = site;
+		//console.log(site);
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
 		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		console.log("src Surfly frame: "+ document.getElementById('surfly-iframe').src);
-		console.log("curr?" + Surfly.currentSession);
-		console.log("old way?" + window.__surfly);
-		//relocate_url();
-		setTimeout(relocate_url, 2000);
+		console.log("Surfly frame: "+ document.getElementById('surfly-iframe'));
+		relocate_url(site);
 	}
 })
 </script>
