@@ -18,11 +18,14 @@ def index_session_id(session_id):
 def splitscreen_test():
    return render_template('third_frame.html')
 
-@app.route('/first_frame')
+@app.route('/start_page')
 def first_frame():
-   return render_template('first_frame.html')
+   return render_template('start_page.html')
 
 @app.route('/fourth_frame')
 def fourth_frame():
    return render_template('/fourth_frame.html')
 
+@app.route('/popup_link')
+def popup_link():
+   return render_template('popup_link.html')

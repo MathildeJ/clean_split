@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <title>Popup link</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <style>
+      body {
+         background-image: url('../static/ride.jpg');
+      }
+      
+      #exitButton {
+         background-color: white;
+      }
+    
+      .mainText {
+         color: white;
+      }       
+ 
+    </style>
+
+</head>
+
+<body>
+
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h3 class="mainText">Copy-paste the link below to share with a friend!</h3>
+            <div id="invite">Invite link</div>
+            <a id="invite_a" style="visibility:hidden">Invite link</a>
+            <br>
+            <button id="exitButton" class="btn btn-dark btn-lg" onclick="exitPopup()">Close</button>
+        </div>
+    </header>
+
+
+    <script>
+        function exitPopup() {
+           parent.closeIframe()
+        }
+    </script>
+
+   <script>
+	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+	var eventer = window[eventMethod];
+	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+	// Listen to message from child IFrame window
+	eventer(messageEvent, function (e) {
+	   var info = JSON.stringify(e.data);
+	   console.log("the iframe recieves the message ", e.data);
+	   //var invite_link = document.getElementById('invite');
+	   //invite_link.innerHTML = e.data;
+	   //invite_link.style.visibility = 'visible';
+	   if(info.indexOf('link to open')!==-1){
+                console.log("does it go in here?");
+		// we extract the link from the data 
+		var invite_link = document.getElementById('invite');
+		var invite = document.getElementById('invite_a');
+		invite_link.innerHTML = e.data;
+		invite_link.style.visibility = 'visible';
+		invite.href = e.data.substring(14);
+		invite.style.visibility = 'visible';
+	   }
+	}, false);
+   </script>
+
+</body>
+</html>
