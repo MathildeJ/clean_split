@@ -14,7 +14,7 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 
 <script>
 var sess;
-var test;
+//var test;
 
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
 window.addEventListener('DOMContentLoaded', function() {
@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			sess = session;
-			test = this;
+			//test = this;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -49,6 +49,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			var site = new_url.substring(12, new_url.length-2);
 			console.log(session);
 			session.relocate(site);
+			this.relocate(site);
 			//sess = session;
 		    }
 		}).startLeader();
@@ -62,6 +63,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			//session.relocate(site);
 			//session.sendMessage({url: 'url:' + site}, '*');
 			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
+			this.relocate(site);
 		    }
 		})
 	}
@@ -80,7 +82,7 @@ function relocate_url(url){
 	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
 	//console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');	
-	test.sendMessage({url: 'url:' + url}, '*');
+	//test.sendMessage({url: 'url:' + url}, '*');
 	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
