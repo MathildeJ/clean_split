@@ -40,7 +40,7 @@
 				var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 				// append the page url to the session id
                                 res = fullPageUrl.concat('/splitscreen', sessionID);
-        
+                                
 
 		      })
 		      .startLeader();
@@ -50,8 +50,8 @@
 	 });
 
     // send the link to the top page (popup)
-    var popupWindow = document.getElementById('popupWindow').contentWindow;
-                                popupWindow.postMessage("link to open: " + res, "*");
+    // var popupWindow = document.getElementById('popupWindow').contentWindow;
+                               // popupWindow.postMessage("link to open: " + res, "*");
 
     </script>
 
