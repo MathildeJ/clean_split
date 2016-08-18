@@ -108,7 +108,7 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
-
+   console.log(e.data);
    if(info.indexOf('flink')!==-1){
 	var link = e.data.substring(7);
 	if(link.indexOf('\\')){ link = link.substring(0, link.length);};
