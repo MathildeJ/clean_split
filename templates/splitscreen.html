@@ -47,7 +47,7 @@ eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
 
    if(info.indexOf('link to open')!==-1){
-	// if we're
+	// 
 	var invite_link = document.getElementById('invite');
 	var invite = document.getElementById('invite_a');
 	invite_link.innerHTML = e.data;

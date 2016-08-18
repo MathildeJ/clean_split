@@ -37,49 +37,12 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			sess = session;
-	      	})
-		.on('message', function(session, event) {
-		    console.log('page from the session says:', event.data);
-		    var new_url = JSON.stringify(event.data);
-		    //console.log(new_url);	
-		    if(new_url.indexOf('url')){
-			var site = new_url.substring(12, new_url.length-2);
-			session.relocate(site);
-		
-		    }
-		})
-		.on('relocated', function(session, event) {
-		    console.log('relocated');
-		    console.log("current session?" + Surfly.currentSession);
-		}).startLeader();
-	} else {
-		Surfly.currentSession
-		.on('message', function(session, event) {	
-		    console.log('page curr sess: ', event.data);
-		    var new_url = JSON.stringify(event.data);
-		    if(new_url.indexOf('url')){
-			var site = new_url.substring(12, new_url.length-2);
-			//session.sendMessage({url: 'url:' + site}, '*');
-			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
-		    }
-		})
-	}
+	      	}).startLeader();
+	} 
      }
    });
  });
 
-
-function relocate(){
-	var url = document.getElementById('url').value;
-	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
-}
-
-function relocate_url(url){
-	console.log('relocation');
-	//console.log("session?" + sess);
-	sess.sendMessage({url: 'url:' + url}, '*');	
-	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
-}
 
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
