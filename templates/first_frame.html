@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>First frame</title>
     <!-- stylesheet from bootstrap -->
-    <!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.min.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.min.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.css') }}">
-    -->
+    
     <!-- stylesheet -->
-    <!-- when not in a Surfly session, loads the image of the beach- otherwise loads the bike image 
+    <!-- when not in a Surfly session, loads the image of the beach- otherwise loads the bike image -->
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='first_frame.css') }}">
-    -->
+    
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -71,22 +71,24 @@
         </div>
     </header>
 
+
    <!-- put the iframe on top of the rest of the page so it looks like a popup -->
+   <!--
    <iframe id="popupWindow" style="width: 350px; height: 500px; top: 50px;    left: 50px;    display: block;  visibility:hidden;  position: absolute; background-image: url(../static/sunset.jpg); background-size: cover;" src="./popup_link">
-   </iframe>
+   </iframe> -->
 
    <script>
-    function showLink() {
-       document.getElementById("popupWindow").style.visibility = 'visible';
-    }
+   // function showLink() {
+   //    document.getElementById("popupWindow").style.visibility = 'visible';
+   // }
    </script>
 
    <script>
-     function closeIframe() {
-       document.getElementById("popupWindow").style.visibility = 'hidden';
-     }
+   //  function closeIframe() {
+  //     document.getElementById("popupWindow").style.visibility = 'hidden';
+   //  }
    </script>
-
+   
    <script>
 	window.addEventListener('message', function(e){
 		// listen for the follower link 
