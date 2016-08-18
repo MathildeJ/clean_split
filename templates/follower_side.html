@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Untitled Document</title>
+<title>follower side</title>
 
 <link href="../static/splitscreen.css" rel="stylesheet">
 
@@ -22,8 +22,9 @@ window.addEventListener('DOMContentLoaded', function() {
     if (init.success) {
 	if(!Surfly.currentSession){
 	    	s = Surfly.session();
-	        s._settings.url = "https://www.surfly.com";
+	        s._settings.url = "https://intense-cove-96984.herokuapp.com/follower_side_start";
 		s.on('session_started', function(session) {
+                        // get the follower link
 			var retrievedLink = session.followerLink;
 			var frame = document.getElementById('ifrm1').contentWindow;
 			// we send the link to the first frame (where a Surfly session is already started)
@@ -35,6 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
    });
  });
 function sendMess(){
+        // relocate to the url entered in the form
 	var url = document.getElementById('url').value;
 	sess.relocate(url);
 }
@@ -43,6 +45,8 @@ function sendMess(){
 </head>
 
 <body>
+
+<!-- the navbar -->
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<h4 class="text-title">Nav bar</h4>
@@ -56,7 +60,10 @@ function sendMess(){
 	</form>
 </div>
 
+<!-- the iframes -->
+<!-- the follower link is opened in this frame -->
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
+<!-- the leader link is opened in this frame -->
 <div class="box"><iframe id="ifrm2" src="" height="700" width="49%" align='right'></iframe></div>
 
 
