@@ -86,6 +86,7 @@ function relocate_url(url){
 	sess.sendMessage({url: 'url:' + url}, '*');	
 	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 	console.log("test: " + test);
+	test.sendMessage({url: 'url:' + url}, '*');
 }
 
 window.addEventListener('message', function(e){
