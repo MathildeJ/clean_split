@@ -16,6 +16,7 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 </script>
 
 <script>
+var sess;
 
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, docked_only: true};
 window.addEventListener('DOMContentLoaded', function() {
@@ -29,12 +30,17 @@ window.addEventListener('DOMContentLoaded', function() {
 			var frame = document.getElementById('ifrm1').contentWindow;
 			// we send the link to the first frame (where a Surfly session is already started)
 			frame.postMessage(JSON.stringify({"command": "message", "data": retrievedLink}), '*');
+			sess = session;
 	     	}).startLeader('#ifrm2'); 
 	}
     }
    });
  });
 
+function sendMess(){
+	var url = document.getElementById('url').value;
+	sess.relocate(url);
+}
 </script>
 
 </head>
@@ -43,6 +49,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <div class="box"><iframe id="ifrm2" src="" height="700" width="49%" align='right'></iframe></div>
+
+<div id="form_wrapper" style="visibility:visible;">
+	<form id="nav" action="" method="post">
+		<h4 class="text-title">Nav bar</h4>
+		<label>
+			<span>Website :</span>
+		        <input id="url" type="text" name="url" />
+		</label>
+		<label>
+		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
+		</label>
+	</form>
+</div>
 
 <script>
 // get the current url and the follower link
@@ -54,8 +73,6 @@ var fullUrl =  "https://surfly-s1.com".concat(sessionID);
 // set the url of the first frame to the follower link
 document.getElementById('ifrm1').src = fullUrl;
 </script>
-
-
 
 </body>
 </html>

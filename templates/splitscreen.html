@@ -52,8 +52,6 @@ window.addEventListener('DOMContentLoaded', function() {
 function sendMess(){
 	var url = document.getElementById('url').value;
 	sess.relocate(url);
-	//var frame = document.getElementById('ifrm1').contentWindow;
-	//frame.postMessage('test_re:'+url, '*');
 }
 
 window.addEventListener('message', function(e){
@@ -70,19 +68,13 @@ window.addEventListener('message', function(e){
 			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
-/*
-	if(string.indexOf('test_re')!==-1){
-		console.log("ok");
-		var site = string.substring(9,string.length-1);
-		sess.relocate(site);
-	}
-*/
 })
 </script>
 
 </head>
 
 <body>
+
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<h4 class="text-title">Nav bar</h4>
@@ -95,6 +87,7 @@ window.addEventListener('message', function(e){
 		</label>
 	</form>
 </div>
+
 <div id="invite" style="visibility:hidden">Invite link</div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
