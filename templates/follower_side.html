@@ -16,13 +16,13 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 
 <script>
 var sess;
-var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, docked_only: true};
+var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, docked_only: true, ui_off: true};
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
     if (init.success) {
 	if(!Surfly.currentSession){
 	    	s = Surfly.session();
-	        s._settings.url = "https://www.google.com";
+	        s._settings.url = "https://www.surfly.com";
 		s.on('session_started', function(session) {
 			var retrievedLink = session.followerLink;
 			var frame = document.getElementById('ifrm1').contentWindow;
