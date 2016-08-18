@@ -52,7 +52,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		})
 		.on('relocated', function(session, event) {
 		    console.log('relocated');
-		    sess = session;
+		    //sess = session;
+	            test = session;
 		}).startLeader();
 	} else {
 		Surfly.currentSession
@@ -64,10 +65,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			//session.sendMessage({url: 'url:' + site}, '*');
 			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
 		    }
-		})
-		.on('relocated', function(session, event) {
-		    console.log('relocated curr');
-		    test = session;
 		})
 	}
      }
