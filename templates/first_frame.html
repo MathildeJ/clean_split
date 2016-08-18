@@ -5,82 +5,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
-<script>
-(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
-l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
-l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
-(window,document,'script','Surfly');
-</script>
-
-<script>
-var sess;
-
-var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
-window.addEventListener('DOMContentLoaded', function() {
-  Surfly.init(settings, function(init) {
-    if (init.success) {
-      	if(!Surfly.currentSession){
-	      Surfly.session()
-		.on('session_started', function(session) {
-		       // get the session id from the follower link
-			var followerLink = session.followerLink;
-			var linkIndex = followerLink.indexOf(".com");
-			var sessionID = followerLink.substring(linkIndex+4, linkIndex+16);
-			// get the page url
-			var pageUrl = document.location.href;
-			var pageIndex = pageUrl.indexOf("https");
-			var pageEnd = pageUrl.indexOf("first_frame");
-			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
-			// append the page url to the session id
-			var res = fullPageUrl.concat('/splitscreen', sessionID);
-			// send the link to the parent page
-			window.top.postMessage("link to open: " + res, "*");
-
-			sess = session;
-	      	}).startLeader();
-	} 
-     }
-   });
- });
-
-
-window.addEventListener('message', function(e){
-	var string = JSON.stringify(e.data);
-	//console.log(e.data);
-	if(string.indexOf('cobro_event')){
-		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-			var index = string.indexOf('https');
-			var indexEnd = string.indexOf('origin');	
-			var flink = string.substring(index, indexEnd-4);
-			window.top.postMessage('flink: ' + flink , '*' );
-		}
-	}
-	
-	if(string.indexOf('test_re')!==-1){
-		console.log("ok");
-		var site = string.substring(9,string.length-1);
-		//console.log(site);
-		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
-		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		sess.relocate(site);
-	}
-})
-</script>
 
 </head>
 
 <body>
-<div id="form_wrapper" style="visibility:visible;">
-	<form id="nav" action="" method="post">
-		<h3 class="text-title">Nav bar</h3>
-		<label>
-			<span>Website :</span>
-		        <input id="url" type="text" name="url" />
-		</label>
-		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=relocate() value="Go!" />
-		</label>
-	</form>
-</div>
+
 </body>
 </html> 
