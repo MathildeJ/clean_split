@@ -37,8 +37,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 			// append the page url to the session id
 			var res = fullPageUrl.concat('/splitscreen', sessionID);
-			// send the link to the parent page
-			window.top.postMessage("link to open: " + res, "*");
+			
+		        var invite_link = document.getElementById('invite');
+			var invite = document.getElementById('invite_a');
+			invite_link.innerHTML = res;
+			invite_link.style.visibility = 'visible';
+			invite.href = res.substring(14);
+			invite.style.visibility = 'visible';
 
 			sess = session;
 	      	}).startLeader('#ifrm1');
@@ -107,12 +112,7 @@ eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
 
    if(info.indexOf('link to open')!==-1){
-	var invite_link = document.getElementById('invite');
-	var invite = document.getElementById('invite_a');
-	invite_link.innerHTML = e.data;
-	invite_link.style.visibility = 'visible';
-	invite.href = e.data.substring(14);
-	invite.style.visibility = 'visible';
+
    }
 
    if(info.indexOf('flink')!==-1){
