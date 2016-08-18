@@ -46,10 +46,12 @@ window.addEventListener('DOMContentLoaded', function() {
      }
    });
  });
+
 function sendMess(){
 	var url = document.getElementById('url').value;
 	sess.relocate(url);
 }
+
 window.addEventListener('message', function(e){
      var origin = event.origin || event.originalEvent.origin;
      if (origin == "https://surfly-s1.com") {
@@ -69,6 +71,7 @@ window.addEventListener('message', function(e){
 		}
 	}
     }
+
 })
 </script>
 
@@ -77,6 +80,7 @@ window.addEventListener('message', function(e){
 <body>
 
 <!-- navbar -->
+
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
 		<h4 class="text-title">Nav bar</h4>
@@ -89,6 +93,7 @@ window.addEventListener('message', function(e){
 		</label>
 	</form>
 </div>
+
 
 <!-- display the links at the top of the page -->
 <div id="invite" style="visibility:hidden">Invite link</div>
