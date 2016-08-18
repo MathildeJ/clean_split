@@ -42,7 +42,6 @@
     </script>
 
    <script>
-        console.log("test: is heroku updating?");
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -51,15 +50,15 @@
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
 	   console.log("the iframe recieves the message ", e.data);
-	   var invite_link = document.getElementById('invite');
-	   invite_link.innerHTML = e.data;
-	   invite_link.style.visibility = 'visible';
+	   //var invite_link = document.getElementById('invite');
+	   //invite_link.innerHTML = e.data;
+	   //invite_link.style.visibility = 'visible';
 	   if(info.indexOf('link to open')!==-1){
 		// we extract the link from the data 
-		//var invite_link = document.getElementById('invite');
+		var invite_link = document.getElementById('invite');
 		var invite = document.getElementById('invite_a');
-		//invite_link.innerHTML = e.data;
-		//invite_link.style.visibility = 'visible';
+		invite_link.innerHTML = e.data;
+		invite_link.style.visibility = 'visible';
 		invite.href = e.data.substring(14);
 		invite.style.visibility = 'visible';
 	   }
