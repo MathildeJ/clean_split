@@ -4,19 +4,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>First frame</title>
-    <!-- stylesheet from bootstrap -->
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.min.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='creative.css') }}">
-    
-    <!-- stylesheet -->
-    <!-- when not in a Surfly session, loads the image of the beach- otherwise loads the bike image -->
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='first_frame.css') }}">
-    
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/stylish-portfolio.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <script>
 	(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
@@ -61,15 +57,14 @@
 
 <body id="page-top">
 
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">Invite a friend!</h1>
-                <hr>
-                <p>Click below to invite someone to join your splitscreen session</p>
-                <button class="btn btn-primary btn-xl page-scroll" onclick="showLink()">Invite!</button>
-            </div>
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Invite a friend!</h1>
+            <h3>Click below to invite someone to join your splitscreen session</h3>
+            <br>
+            <button class="btn btn-dark btn-lg" onclick="showLink()">Invite!</button>
         </div>
-
+    </header>
 
    <!-- put the iframe on top of the rest of the page so it looks like a popup -->
    <iframe id="popupWindow" style="width: 350px; height: 500px; top: 50px;    left: 50px;    display: block;  visibility:hidden;  position: absolute;" src="./popup_link">
