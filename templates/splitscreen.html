@@ -56,6 +56,9 @@ window.addEventListener('DOMContentLoaded', function() {
 					console.log(flink);
 				}
 			}
+			document.getElementById('ifrm2').src = link;
+			document.getElementById('invite').style.visibility = 'hidden';
+			document.getElementById('invite_a').style.visibility = 'hidden';
 		}).startLeader('#ifrm1');
 	} 
      }
@@ -124,9 +127,7 @@ eventer(messageEvent, function (e) {
    if(info.indexOf('flink')!==-1){
 	var link = e.data.substring(7);
 	if(link.indexOf('\\')){ link = link.substring(0, link.length);};
-	document.getElementById('ifrm2').src = link;
-	document.getElementById('invite').style.visibility = 'hidden';
-	document.getElementById('invite_a').style.visibility = 'hidden';
+	
    }
 }, false);
 </script>
