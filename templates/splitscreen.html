@@ -53,6 +53,8 @@ function sendMess(){
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
         console.log("the source sending a message to splitscreen is ", e.source);
+        var origin = event.origin || event.originalEvent.origin;
+        console.log("the origin is ", origin);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
                         // extract the follower link from the message 
