@@ -8,6 +8,48 @@
 <link href="../static/splitscreen.css" rel="stylesheet">
 <link href="../static/leader_side.css" rel="stylesheet">
 
+<script>
+	(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+	l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+	l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
+	(window,document,'script','Surfly');
+    </script>
+
+    <script>
+	var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false};
+	window.addEventListener('DOMContentLoaded', function() {
+	  Surfly.init(settings, function(init) {
+	    if (init.success) {
+	      if(!Surfly.currentSession){
+		      Surfly.session()
+			.on('session_started', function(session) {
+			       // get the session id from the follower link
+				var followerLink = session.followerLink;
+				var linkIndex = followerLink.indexOf(".com");
+				var sessionID = followerLink.substring(linkIndex+4, linkIndex+16);
+				// get the page url
+				var pageUrl = document.location.href;
+				var pageIndex = pageUrl.indexOf("https");
+				var pageEnd = pageUrl.indexOf("first_frame");
+				var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
+				// append the page url to the session id
+                                res = fullPageUrl.concat('/splitscreen', sessionID);
+        
+
+		      })
+		      .startLeader('#ifrm1');
+		} 
+	     }
+	   });
+	 });
+
+    // send the link to the top page (popup)
+    //var popupWindow = document.getElementById('popupWindow').contentWindow;
+    //                            popupWindow.postMessage("link to open: " + res, "*");
+
+    </script>
+
+
 </head>
 
 <body>
@@ -15,7 +57,7 @@
 <div id="invite" style="visibility:hidden">Invite link</div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
-<div class="box"><iframe id="ifrm1" src="./first_frame" height="700" width="49%" align='left'></iframe></div>
+<div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
 
 <script>
