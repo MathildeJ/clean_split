@@ -42,27 +42,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			invite.href = res;
 			invite.style.visibility = 'visible';
 
-			sess = session;
-	      	})
-		.on('message', function(session, event){
-                        console.log(event.data);
-			var string = JSON.stringify(event.data);
-			console.log(string);
-			if(string.indexOf('cobro_event')){
-				console.log('here');
-				if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-					console.log('ok');
-					var index = string.indexOf('https');
-					var indexEnd = string.indexOf('origin');	
-					var flink = string.substring(index, indexEnd-4);
-					console.log(flink);
-					if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
-					document.getElementById('ifrm2').src = flink;
-					document.getElementById('invite').style.visibility = 'hidden';
-					document.getElementById('invite_a').style.visibility = 'hidden';
-				}
-			}
-			
+			sess = session;	
 		}).startLeader('#ifrm1');
 	} 
      }
@@ -78,7 +58,12 @@ window.addEventListener('message', function(e){
 			var index = string.indexOf('https');
 			var indexEnd = string.indexOf('origin');	
 			var flink = string.substring(index, indexEnd-4);
+			console.log(flink);
 			//window.top.postMessage('flink: ' + flink , '*' );
+			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
+			document.getElementById('ifrm2').src = flink;
+			document.getElementById('invite').style.visibility = 'hidden';
+			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
 	
