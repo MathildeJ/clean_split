@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
 		    var new_url = JSON.stringify(event.data);
-		    console.log(new_url);	
+		    //console.log(new_url);	
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
 			session.relocate(site);
@@ -60,7 +60,7 @@ function relocate(){
 
 function relocate_url(url){
 	//var url = document.getElementById('url').value;
-	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
+	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
 	sess.sendMessage({url: 'url:' + url}, '*');		
 }
 </script>
@@ -101,7 +101,7 @@ window.addEventListener('message', function(e){
 		//console.log(site);
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
 		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		console.log("Surfly frame: "+ document.getElementById('surfly-iframe'));
+		console.log("Surfly frame: "+ document.getElementById('surfly-iframe').contentWindow);
 		relocate_url(site);
 	}
 })
