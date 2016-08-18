@@ -52,7 +52,8 @@ function sendMess(){
 }
 window.addEventListener('message', function(e){
      var origin = event.origin || event.originalEvent.origin;
-     if (origin = "https://surfly-s1.com") {
+     if (origin !== "https://surfly-s1.com") {
+        console.log("passed the test");
         var string = JSON.stringify(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
