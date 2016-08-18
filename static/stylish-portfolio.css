@@ -28,7 +28,7 @@ body {
     padding: 0;
     font-size: 4.5em;
     font-weight: 700;
-    color: #87cefa;
+    color: white
 }
 
 /* Custom Button Styles */
@@ -36,7 +36,7 @@ body {
 .btn-dark {
     border-radius: 0;
     color: #000;
-    background-color: #87cefa;;
+    background-color: white;;
 }
 
 .btn-dark:hover,
