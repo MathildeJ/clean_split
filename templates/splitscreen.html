@@ -21,8 +21,9 @@
 	  Surfly.init(settings, function(init) {
 	    if (init.success) {
 	      if(!Surfly.currentSession){
-		      Surfly.session()
-			.on('session_started', function(session) {
+		      s = Surfly.session();
+                      s._settings.url = 'www.google.nl';
+			s.on('session_started', function(session) {
 			       // get the session id from the follower link
 				var followerLink = session.followerLink;
 				var linkIndex = followerLink.indexOf(".com");
@@ -48,7 +49,6 @@
     //                            popupWindow.postMessage("link to open: " + res, "*");
 
     </script>
-
 
 </head>
 

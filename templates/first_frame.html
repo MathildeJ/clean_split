@@ -39,20 +39,20 @@
 				var pageEnd = pageUrl.indexOf("first_frame");
 				var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 				// append the page url to the session id
-				var res = fullPageUrl.concat('/splitscreen', sessionID);
+                                res = fullPageUrl.concat('/splitscreen', sessionID);
+        
 
-				// send the link to the top page (popup)
-                                var popupWindow = document.getElementById('popupWindow').contentWindow;
-                                popupWindow.postMessage("link to open: " + res, "*");
-                                var invite_link = document.getElementById('invite');
-	                        invite_link.innerHTML = e.data;
-	                        invite_link.style.visibility = 'visible';
 		      })
 		      .startLeader();
 		} 
 	     }
 	   });
 	 });
+
+    // send the link to the top page (popup)
+    var popupWindow = document.getElementById('popupWindow').contentWindow;
+                                popupWindow.postMessage("link to open: " + res, "*");
+
     </script>
 
     <style>
@@ -85,7 +85,6 @@
             <h3 class="mainText">Click below to invite someone to join your splitscreen session</h3>
             <br>
             <button id="inviteButton" class="btn btn-dark btn-lg" onclick="showLink()">Invite!</button>
-            <div id="invite">Invite link</div>
         </div>
     </header>
 
