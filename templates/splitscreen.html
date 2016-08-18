@@ -42,7 +42,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			invite.href = res;
 			invite.style.visibility = 'visible';
 
+			document.getElementById('exit_button').style.visibility="visible";
+
 			sess = session;	
+		})
+		.on('session_ended', function(session) {
+			console.log('end');
+			document.getElementById('exit_button').style.visibility="hidden";
 		}).startLeader('#ifrm1');
 	} 
      }
@@ -69,6 +75,10 @@ window.addEventListener('message', function(e){
 		}
 	}
 })
+
+function exitSession(){
+  Surfly.currentSession.end('https://www.surfly.com');
+}
 </script>
 
 </head>
@@ -86,6 +96,10 @@ window.addEventListener('message', function(e){
 		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
 		</label>
 	</form>
+</div>
+
+<div style="text-align:right;">
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit session</button>
 </div>
 
 <div id="invite" style="visibility:hidden">Invite link</div>
