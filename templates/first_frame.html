@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
 
-			//sess = session;
+			sess = session;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -83,7 +83,7 @@ function relocate(){
 function relocate_url(url){
 	console.log('relocation');
 	//console.log("session?" + sess);
-	//sess.sendMessage({url: 'url:' + url}, '*');	
+	sess.sendMessage({url: 'url:' + url}, '*');	
 	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 	//console.log("test: " + test);
 	test.sendMessage({url: 'url:' + url}, '*');
