@@ -84,12 +84,12 @@ function relocate_url(url){
 	//console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');	
 	//test.sendMessage({url: 'url:' + url}, '*');
-	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
+	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
 window.addEventListener('message', function(e){
 	var string = JSON.stringify(e.data);
-	console.log(e.data);
+	//console.log(e.data);
 	if(string.indexOf('cobro_event')){
 		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
 			var index = string.indexOf('https');
@@ -101,7 +101,7 @@ window.addEventListener('message', function(e){
 	}
 	
 	if(string.indexOf('test_re')!==-1){
-		console.log("ok1?");
+		console.log("ok?");
 		var site = string.substring(9,string.length-1);
 		//console.log(site);
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
@@ -126,16 +126,5 @@ window.addEventListener('message', function(e){
 		</label>
 	</form>
 </div>
-
-
-<script>
-window.addEventListener('message', function(e){
-	var string = JSON.stringify(e.data);
-	console.log(e.data);
-	if(string.indexOf('test_re:')!==-1){
-		console.log("ok2?");
-	}
-})
-</script>
 </body>
 </html> 
