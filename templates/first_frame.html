@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			window.top.postMessage("link to open: " + res, "*");
 
 			sess = session;
+			console.log(this);
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -70,6 +71,28 @@ function relocate_url(url){
 	console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');		
 }
+
+window.addEventListener('message', function(e){
+	var string = JSON.stringify(e.data);
+	//console.log(e.data);
+	if(string.indexOf('cobro_event')){
+		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
+			var index = string.indexOf('https');
+			var indexEnd = string.indexOf('origin');	
+			var flink = string.substring(index, indexEnd-4);
+			//console.log("flink "+flink);
+			window.top.postMessage('flink: ' + flink , '*' );
+		}
+	}
+	
+	if(string.indexOf('test_re')!==-1){
+		var site = string.substring(9,string.length-1);
+		//console.log(site);
+		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
+		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
+		relocate_url(site);
+	}
+})
 </script>
 
 </head>
@@ -90,28 +113,7 @@ function relocate_url(url){
 
 
 <script>
-window.addEventListener('message', function(e){
-	var string = JSON.stringify(e.data);
-	//console.log(e.data);
-	if(string.indexOf('cobro_event')){
-		if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
-			var index = string.indexOf('https');
-			var indexEnd = string.indexOf('origin');	
-			var flink = string.substring(index, indexEnd-4);
-			//console.log("flink "+flink);
-			window.top.postMessage('flink: ' + flink , '*' );
-		}
-	}
-	
-	if(string.indexOf('test_re')!==-1){
-		var site = string.substring(9,string.length-1);
-		//console.log(site);
-		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
-		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		console.log("Surfly frame: "+ document.getElementById('surfly-iframe').contentWindow);
-		relocate_url(site);
-	}
-})
+
 </script>
 </body>
 </html> 
