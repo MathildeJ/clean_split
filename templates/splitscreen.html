@@ -22,7 +22,7 @@
 	    if (init.success) {
 	      if(!Surfly.currentSession){
 		      s = Surfly.session();
-                      s._settings.url = 'www.google.nl';
+                      s._settings.url = 'https://www.google.nl';
 			s.on('session_started', function(session) {
 			       // get the session id from the follower link
 				var followerLink = session.followerLink;
