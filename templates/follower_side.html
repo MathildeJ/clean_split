@@ -8,6 +8,35 @@
 
 <link href="../static/splitscreen.css" rel="stylesheet">
 
+<script>
+(function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
+(window,document,'script','Surfly');
+</script>
+
+<script>
+
+var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, docked_only: true};
+window.addEventListener('DOMContentLoaded', function() {
+  Surfly.init(settings, function(init) {
+    if (init.success) {
+	if(!Surfly.currentSession){
+	    	Surfly.session()
+		.on('session_started', function(session) {
+			var retrievedLink = session.followerLink;
+			//console.log("the retrieved link is ", retrievedLink);
+			window.top.postMessage(retrievedLink, "*");
+	     	}).startLeader(); 
+	} else {
+		console.log(Surfly.currentSession);
+	}
+    }
+   });
+ });
+
+</script>
+
 </head>
 
 <body>

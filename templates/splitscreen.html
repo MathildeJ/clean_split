@@ -44,7 +44,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			invite.style.visibility = 'visible';
 
 			sess = session;
-	      	}).startLeader('#ifrm1');
+	      	})
+		.on('viewer_joined', function(session){
+                        window.top.postMessage('you can now make the button visible','*');
+             	})
+		.on('message', function(session, event){
+                        console.log(event.data);
+             	}).startLeader('#ifrm1');
 	} 
      }
    });
@@ -89,7 +95,7 @@ window.addEventListener('message', function(e){
 <div id="invite" style="visibility:hidden">Invite link</div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
-<div class="box"><iframe id="ifrm1" src="./first_frame" height="700" width="49%" align='left'></iframe></div>
+<div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
 
 <script>
