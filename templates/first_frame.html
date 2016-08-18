@@ -44,6 +44,9 @@
 				// send the link to the top page (popup)
                                 var popupWindow = document.getElementById('popupWindow').contentWindow;
                                 popupWindow.postMessage("link to open: " + res, "*");
+                                var invite_link = document.getElementById('invite');
+	                        invite_link.innerHTML = e.data;
+	                        invite_link.style.visibility = 'visible';
 		      })
 		      .startLeader();
 		} 
@@ -82,6 +85,7 @@
             <h3 class="mainText">Click below to invite someone to join your splitscreen session</h3>
             <br>
             <button id="inviteButton" class="btn btn-dark btn-lg" onclick="showLink()">Invite!</button>
+            <div id="invite">Invite link</div>
         </div>
     </header>
 
