@@ -47,10 +47,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		    //console.log(new_url);	
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
-			console.log(session);
+			//console.log(session);
 			session.relocate(site);
 			//this.relocate(site);
-			//sess = session;
+			sess = session;
 		    }
 		}).startLeader();
 	} else {
@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			//session.sendMessage({url: 'url:' + site}, '*');
 			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
 			//this.relocate(site);
-		    }
+		    }.sendMessage({url: 'testest'}, '*');
 		})
 	}
      }
