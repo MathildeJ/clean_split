@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function relocate(){
 	var url = document.getElementById('url').value;
-	Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');	
+	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
 </script>
@@ -102,7 +102,7 @@ window.addEventListener('message', function(e){
 		url = site;
 		//var s_frame = document.getElementById('surfly-iframe').contentWindow;
 		//s_frame.postMessage(JSON.stringify({"command": "message", "data": site}), '*');
-		
+		console.log("curr?" + Surfly.currentSession);
 		relocate_url();
 	}
 })
