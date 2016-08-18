@@ -41,6 +41,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			sess = session;
 			//console.log(this);
 			test = this;
+			you = this;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -57,6 +58,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		    console.log('page curr sess: ', event.data);
 		    var new_url = JSON.stringify(event.data);
 		    //console.log(new_url);	
+		    console.log(test);
+		    console.log(you);
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
 			console.log(session);
@@ -79,8 +82,8 @@ function relocate_url(url){
 	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
 	//console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');	
-	test.sendMessage({url: 'url:' + url}, '*');
-	Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
+	//test.sendMessage({url: 'url:' + url}, '*');
+	//Surfly.currentSession.sendMessage({url: 'url:' + url}, '*');	
 }
 
 window.addEventListener('message', function(e){
