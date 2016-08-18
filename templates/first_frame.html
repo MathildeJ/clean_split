@@ -64,9 +64,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			//session.relocate(site);
 			//session.sendMessage({url: 'url:' + site}, '*');
 			Surfly.currentSession.sendMessage({url: 'url:' + site}, '*');
-			try{
-				Surfly.currentSession.relocate(site);
-			}
+			Surfly.currentSession.relocate(site);
 		    }
 		})
 	}
