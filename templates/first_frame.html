@@ -50,6 +50,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		})
 		.on('relocated', function(session, event) {
 		    console.log('relocated');
+		    console.log("current session?" + Surfly.currentSession);
 		}).startLeader();
 	} else {
 		Surfly.currentSession
