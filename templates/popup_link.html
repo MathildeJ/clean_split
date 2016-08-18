@@ -4,6 +4,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <title>Popup link</title>
 
     <!-- stylesheet from bootstrap -->
@@ -19,9 +20,10 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
 </head>
+
 <body>
 
-    <header>
+    <header class="page-image">
         <div class="header-content">
             <div class="header-content-inner">
                 <hr>
@@ -33,28 +35,30 @@
     </header>
 
 
-<script>
-var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-var eventer = window[eventMethod];
-var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+   <script>
+        console.log("test: is heroku updating?");
+	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+	var eventer = window[eventMethod];
+	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
-// Listen to message from child IFrame window
-eventer(messageEvent, function (e) {
-   var info = JSON.stringify(e.data);
-   console.log("the iframe recieves the message ", e.data);
-   var invite_link = document.getElementById('invite');
-   invite_link.innerHTML = e.data;
-   invite_link.style.visibility = 'visible';
-   if(info.indexOf('link to open')!==-1){
-	// we extract the link from the data 
-        //var invite_link = document.getElementById('invite');
-	var invite = document.getElementById('invite_a');
-	//invite_link.innerHTML = e.data;
-	//invite_link.style.visibility = 'visible';
-	invite.href = e.data.substring(14);
-	invite.style.visibility = 'visible';
-   }
-}, false);
-</script>
+	// Listen to message from child IFrame window
+	eventer(messageEvent, function (e) {
+	   var info = JSON.stringify(e.data);
+	   console.log("the iframe recieves the message ", e.data);
+	   var invite_link = document.getElementById('invite');
+	   invite_link.innerHTML = e.data;
+	   invite_link.style.visibility = 'visible';
+	   if(info.indexOf('link to open')!==-1){
+		// we extract the link from the data 
+		//var invite_link = document.getElementById('invite');
+		var invite = document.getElementById('invite_a');
+		//invite_link.innerHTML = e.data;
+		//invite_link.style.visibility = 'visible';
+		invite.href = e.data.substring(14);
+		invite.style.visibility = 'visible';
+	   }
+	}, false);
+   </script>
+
 </body>
 </html>

@@ -16,3 +16,7 @@ header {
     z-index: 20;
     position: absolute;
 }
+
+.page-image {
+    background-image: url("../static/sunset.jpg");
+}
