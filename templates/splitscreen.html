@@ -47,7 +47,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			sess = session;	
 		})
 		.on('session_ended', function(session) {
-			console.log('end');
 			document.getElementById('exit_button').style.visibility="hidden";
 		}).startLeader('#ifrm1');
 	} 
@@ -84,6 +83,9 @@ function exitSession(){
 </head>
 
 <body>
+<div style="text-align:right;">
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit session</button>
+</div>
 
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
@@ -96,10 +98,6 @@ function exitSession(){
 		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
 		</label>
 	</form>
-</div>
-
-<div style="text-align:right;">
-	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit session</button>
 </div>
 
 <div id="invite" style="visibility:hidden">Invite link</div>
