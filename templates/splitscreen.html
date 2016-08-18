@@ -37,12 +37,12 @@ window.addEventListener('DOMContentLoaded', function() {
 			var fullPageUrl = pageUrl.substring(pageIndex, pageEnd-1);
 			// append the page url to the session id
 			var res = fullPageUrl.concat('/splitscreen', sessionID);
-			
+
 		        var invite_link = document.getElementById('invite');
 			var invite = document.getElementById('invite_a');
 			invite_link.innerHTML = res;
 			invite_link.style.visibility = 'visible';
-			invite.href = res.substring(14);
+			invite.href = res;
 			invite.style.visibility = 'visible';
 
 			sess = session;
@@ -110,10 +110,6 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
    var info = JSON.stringify(e.data);
-
-   if(info.indexOf('link to open')!==-1){
-
-   }
 
    if(info.indexOf('flink')!==-1){
 	var link = e.data.substring(7);
