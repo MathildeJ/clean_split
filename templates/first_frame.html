@@ -36,6 +36,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 			// send the link to the parent page
 			window.top.postMessage("link to open: " + res, "*");
+
+			sess = session;
 	      	})
 		.on('message', function(session, event) {
 		    console.log('page from the session says:', event.data);
@@ -44,9 +46,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		    if(new_url.indexOf('url')){
 			var site = new_url.substring(12, new_url.length-2);
 			session.relocate(site);
-			sess = session;
+			//sess = session;
 		    }
 		}).startLeader();
+	} else {
+		Surfly.currentSession.on('message', function(session, event) {
+		    console.log('page curr sess: ', event.data);
+		})
 	}
      }
    });
@@ -61,6 +67,7 @@ function relocate(){
 function relocate_url(url){
 	//var url = document.getElementById('url').value;
 	//Surfly.currentSession.sendMessage({foo: 'url:' + url}, '*');
+	console.log("session?" + sess);
 	sess.sendMessage({url: 'url:' + url}, '*');		
 }
 </script>
