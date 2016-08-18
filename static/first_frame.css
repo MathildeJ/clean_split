@@ -2,4 +2,8 @@
   color: white;
 }
 
+header #testImage {
+  background-image: url(../static/sunset.jpg);
+  background-size: cover;
+}
 
