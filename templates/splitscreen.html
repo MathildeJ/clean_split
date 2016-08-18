@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		        var invite_link = document.getElementById('invite');
 			//var invite = document.getElementById('invite_a');
-			invite_link.innerHTML = res;
+			invite_link.innerHTML = "Copy-paste the link below to invite a friend!\n" + res;
 			invite_link.style.visibility = 'visible';
 			//invite.href = res;
 			//invite.style.visibility = 'visible';
@@ -163,7 +163,7 @@ form{
 	</form>
 </div>
 
-<div id="invite" style="visibility:hidden">Invite link</div>
+<div id="invite" style="visibility:hidden"></div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
