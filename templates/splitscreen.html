@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		        var invite_link = document.getElementById('invite');
 			//var invite = document.getElementById('invite_a');
-			invite_link.innerHTML = "Copy-paste the link below to invite a friend!"+ "\n" + res;
+			invite_link.innerHTML = "Copy-paste the following link to invite a friend!"+ res;
 			invite_link.style.visibility = 'visible';
 			//invite.href = res;
 			//invite.style.visibility = 'visible';
@@ -106,8 +106,8 @@ body {
 }
 
 
-form{
-	position: relative;
+#form_wrapper{
+	position: absolute;
 
 }
 
@@ -122,7 +122,7 @@ form{
     margin-top: 2px;
     outline: 0 none;
     padding: 5px 0px 5px 5px;
-    width: 60%;
+    width: 55%;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;    
@@ -139,7 +139,7 @@ form{
 
 #invite{
 	text-align: center;
-	border: 1px double black;
+	position: absolute;
 }
 
 #title_bar{
