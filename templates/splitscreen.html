@@ -81,17 +81,14 @@ function exitSession(){
 </script>
 
 <style>
-.text-title{
-	margin: 0 auto;
-}
-
 body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 
 #exit_button {
+	float: left;
 	background-color: #ea2020;
-	border: none;
+	border: 1px solid black;
 	color: black;
 	padding: 3px 7px;
 	text-align: center;
@@ -107,20 +104,45 @@ body {
         font-weight: bold;
 	border-radius: 6px;
 }
+
+span{
+}
+
+form{
+	float: left;
+}
+
+input{
+    border: 1px solid red;
+    color: #888;
+    height: 20px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
 </style>
 
 </head>
 
 <body>
 <div style="text-align:right;">
-	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit session</button>
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
 </div>
 
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
-		<h4 class="text-title">Nav bar</h4>
 		<label>
-			<span>Website :</span>
+			<span>Nav bar :</span>
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
