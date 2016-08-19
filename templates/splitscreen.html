@@ -105,7 +105,7 @@ function closeIFrame(){
 <body>
 <div style="text-align:right;">
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
-        <button class="button" id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+        <p id="replaceButton"><button class="button" id="ignore" onclick="ignoreFriend()">Ignore Friend</button></p>
         <button class="button" id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
         <button class="button" id="invite" onclick="inviteFriend()" style="visibilty:hidden">Invite Friend</button>
 </div>
@@ -150,6 +150,7 @@ function closeIFrame(){
     yourFrame.style.width = "99%";
     // we replace the ignore button with an acknowledge friend button
     ignoreButton.style.visibility = "hidden";
+    document.getElementById("replaceButton").appendChild(acknowledgeButton);
     acknowledgeButton.style.visibility = "visible";
   }
 </script>
