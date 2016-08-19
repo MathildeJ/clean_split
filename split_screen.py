@@ -27,5 +27,9 @@ def fourth_frame():
    return render_template('/fourth_frame.html')
 
 @app.route('/follower_side_start')
-def popup_link():
+def follower_side_start():
    return render_template('follower_side_start.html')
+
+@app.route('/popup_link')
+def popup_link():
+   return render_template('popup_link.html')
