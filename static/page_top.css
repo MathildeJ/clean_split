@@ -3,14 +3,13 @@ body {
 }
 
 #exit_button {
-	position: relative;
+
 	background-color: #ea2020;
 	border: 2px solid black;
 	color: black;
 	padding: 3px 7px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 16px;
 	margin: 0 auto;
 	cursor: pointer;
@@ -23,13 +22,12 @@ body {
 }
 
 .button {
-       	position: relative;
+       	
 	background-color: #ea2020;
 	border: 2px solid black;
 	color: black;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 16px;
 	margin: 0 auto;
 	cursor: pointer;
