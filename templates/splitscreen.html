@@ -81,6 +81,7 @@ window.addEventListener('message', function(e){
 
 <div id="menu">
 <button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+<button id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
 </div>
 
 <!-- navbar -->
@@ -115,17 +116,39 @@ window.addEventListener('message', function(e){
     var friendsFrame = document.getElementById("ifrm2");
     var yourFrame = document.getElementById("ifrm1");
     var ignoreButton = document.getElementById("ignore");
+    var acknowledgeButton = document.getElementById("acknowledge");
     // we hide our friends iframe
     friendsFrame.style.visibilty = "hidden";
     // we make our iframe the size of the screen
     yourFrame.style.width = "99%";
     // we replace the ignore button with an acknowledge friend button
     ignoreButton.style.visibility = "hidden";
+    acknowledgeButton.style.visibility = "visible";
     // append the acknowledge friend button to the div 
-    var acknowledgeFriend = document.createElement("BUTTON");
-    var buttonText = document.createTextNode("acknowledge friend"); 
-    acknowledgeFriend.appendChild(buttonText);
-    document.getElementById("menu").appendChild(acknowledgeFriend);
+    //var acknowledgeFriend = document.createElement("BUTTON");
+    // we add text to the button
+    //var buttonText = document.createTextNode("acknowledge friend"); 
+    //acknowledgeFriend.appendChild(buttonText);
+    // we give it an id
+    
+    // we give the button an onclick function
+    //document.getElementById("menu").appendChild(acknowledgeFriend);
+  }
+</script>
+
+<script>
+  // acknowlegde friend button 
+  function acknowledgeFriend() {
+    var stretchFriendFrame = document.getElementById("ifrm2");
+    var shrinkYourFrame = document.getElementById("ifrm1");
+    // we make our friends frame visible
+    stretchFriendsFrame.style.visibility = "visible";
+    // we shrink our frame
+    shrinkYourFrame.style.width = "49%";
+    // we hide the acknowledge friend button
+    document.getElementById("acknowledge").style.visibilty="hidden";
+    // we reveal the ignore friend button
+    document.getElementById("ignore").style.visibilty="visible";
   }
 </script>
 
