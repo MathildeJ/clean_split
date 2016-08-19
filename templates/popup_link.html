@@ -62,9 +62,6 @@
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
 	   console.log("the iframe recieves the message ", e.data);
-	   //var invite_link = document.getElementById('invite');
-	   //invite_link.innerHTML = e.data;
-	   //invite_link.style.visibility = 'visible';
 	   if(info.indexOf('link to open')!==-1){
                 console.log("does it go in here?");
 		// we extract the link from the data 
