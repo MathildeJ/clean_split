@@ -6,7 +6,7 @@
 <title>Splitscreen</title>
 
 <link href="../static/splitscreen.css" rel="stylesheet">
-<link href="../static/leader_side.css" rel="stylesheet">
+<link href="../static/page_top.css" rel="stylesheet">
 
 <script>
 (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
@@ -36,11 +36,15 @@ window.addEventListener('DOMContentLoaded', function() {
 		        var invite_link = document.getElementById('invite');
 			var invite = document.getElementById('invite_a');
                         // display the invite link
-			invite_link.innerHTML = res;
-			invite_link.style.visibility = 'visible';
+			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
+			//invite_link.style.visibility = 'visible';
 			invite.href = res;
 			invite.style.visibility = 'visible';
+			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
+		})
+		.on('session_ended', function(session) {
+			document.getElementById('exit_button').style.visibility="hidden";
 		}).startLeader('#ifrm1');
 	} 
      }
@@ -66,18 +70,26 @@ window.addEventListener('message', function(e){
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
                         // set the source of the second iframe to the follower link
 			document.getElementById('ifrm2').src = flink;
-			document.getElementById('invite').style.visibility = 'hidden';
+			//document.getElementById('invite').style.visibility = 'hidden';
 			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
     }
 
 })
+
+function exitSession(){
+  sess.end('https://www.surfly.com');
+}
 </script>
+
 
 </head>
 
 <body>
+<div style="text-align:right;">
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
+</div>
 
 <div id="menu">
 <button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
@@ -88,9 +100,8 @@ window.addEventListener('message', function(e){
 
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
-		<h4 class="text-title">Nav bar</h4>
 		<label>
-			<span>Website :</span>
+			<h3 id="title_bar">Nav bar :</h3>
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
@@ -101,7 +112,7 @@ window.addEventListener('message', function(e){
 
 
 <!-- display the links at the top of the page -->
-<div id="invite" style="visibility:hidden">Invite link</div>
+<div id="invite" style="visibility:hidden"></div>
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
 <!-- the two iframes -->

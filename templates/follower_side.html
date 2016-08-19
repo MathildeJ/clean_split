@@ -6,6 +6,7 @@
 <title>follower side</title>
 
 <link href="../static/splitscreen.css" rel="stylesheet">
+<link href="../static/page_top.css" rel="stylesheet">
 
 <script>
 (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
@@ -30,7 +31,12 @@ window.addEventListener('DOMContentLoaded', function() {
 			// we send the link to the first frame (where a Surfly session is already started)
 			frame.postMessage(JSON.stringify({"command": "message", "data": retrievedLink}), '*');
 			sess = session;
-	     	}).startLeader('#ifrm2'); 
+
+			document.getElementById('exit_button').style.visibility="visible";
+	     	})
+		.on('session_ended', function(session) {
+			document.getElementById('exit_button').style.visibility="hidden";
+		}).startLeader('#ifrm2'); 
 	}
     }
    });
@@ -41,16 +47,26 @@ function sendMess(){
 	var url = document.getElementById('url').value;
 	sess.relocate(url);
 }
+
+function exitSession(){
+  sess.end('https://www.surfly.com');
+}
 </script>
+
+<style>
+</style>
 
 </head>
 
 <body>
+<div style="text-align:right;">
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
+</div>
+
 <div id="form_wrapper" style="visibility:visible;">
 	<form id="nav" action="" method="post">
-		<h4 class="text-title">Nav bar</h4>
 		<label>
-			<span>Website :</span>
+			<h3 id="title_bar">Nav bar :</h3>
 		        <input id="url" type="text" name="url" />
 		</label>
 		<label>
