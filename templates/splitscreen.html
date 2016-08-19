@@ -35,12 +35,12 @@ window.addEventListener('DOMContentLoaded', function() {
 			// append the page url to the session id
 			var inviteLink = pageUrl.concat(sessionID);
 		        var invite_link = document.getElementById('invite');
-			var invite = document.getElementById('invite_a');
+			var inviteButton = document.getElementById('invite');
                         // display the invite link
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
 			//invite_link.style.visibility = 'visible';
-			invite.href = inviteLink;
-			invite.style.visibility = 'visible';
+			//invite.href = inviteLink;
+			inviteButton.style.visibility = 'visible';
 			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
 		})
@@ -100,7 +100,7 @@ function inviteFriend(){
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
         <button class="button" id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
         <button class="button" id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
-        <button class="button" id="invite" onclick="inviteFriend()">Invite Friend</button>
+        <button class="button" id="invite" onclick="inviteFriend()" style="visibilty:hidden">Invite Friend</button>
 </div>
 
 <!-- navbar -->
