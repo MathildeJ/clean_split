@@ -79,6 +79,8 @@ window.addEventListener('message', function(e){
 
 <body>
 
+<button onclick="ignoreFriend()">Ignore Friend</button>
+
 <!-- navbar -->
 
 <div id="form_wrapper" style="visibility:visible;">
@@ -100,8 +102,29 @@ window.addEventListener('message', function(e){
 <a id="invite_a" style="visibility:hidden">Invite link</a>
 
 <!-- the two iframes -->
+<!-- the frame in which the leader link is opened -->
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
+<!-- the frame in which the follower link will be opened -->
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
+
+<script>
+  // ignore friend button
+  function ignoreFriend() {
+    var friendsFrame = document.getElementById("ifrm2");
+    var yourFrame = document.getElementById("ifrm1");
+    var ignoreButton = document.getElementById("ignore");
+    // we hide our friends iframe
+    friendsFrame.style.visibilty = "hidden";
+    // we make our iframe the size of the screen
+    yourFrame.style.width = "99%";
+    // we replace the ignore button with an acknowledge friend button
+    ignoreButton.style.visibility = "hidden";
+    // append the acknowledge friend button to the div 
+    var aknowledgeFriend = document.createElement("BUTTON");
+    var buttonText = document.createTextNode("acknowledge friend"); 
+    aknowledgeFriend.appendChild(buttonText);
+    document.body.appendChild(acknowledgeFriend);
+</script>
 
 </body>
 
