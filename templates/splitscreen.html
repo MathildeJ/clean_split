@@ -83,7 +83,8 @@ function exitSession(){
 }
 
 function inviteFriend(){
-  document.body.appendChild(inviteLink)
+  var textLink = document.createTextNode(inviteLink);
+  document.body.appendChild(inviteLink);
 }
 </script>
 
