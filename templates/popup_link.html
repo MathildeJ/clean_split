@@ -39,7 +39,7 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h3 class="mainText">Copy-paste the link below to share with a friend!</h3>
-            <div id="invite">Invite link</div>
+            <div id="invite" style="color:white">Invite link</div>
             <a id="invite_a" style="visibility:hidden">Invite link</a>
             <br>
             <button id="exitButton" class="btn btn-dark btn-lg" onclick="exitPopup()">Close</button>
@@ -49,7 +49,7 @@
 
     <script>
         function exitPopup() {
-           parent.closeIframe()
+           parent.closeIframe();
         }
     </script>
 
@@ -63,16 +63,6 @@
 	   var info = JSON.stringify(e.data);
 	   console.log("the iframe recieves the message ", e.data);
            document.getElementById("invite").innerHTML = e.data;
-	   //if(info.indexOf('link to open')!==-1){
-             //   console.log("does it go in here?");
-		// we extract the link from the data 
-	//	var invite_link = document.getElementById('invite');
-	//	var invite = document.getElementById('invite_a');
-	//	invite_link.innerHTML = e.data;
-	//	invite_link.style.visibility = 'visible';
-	//	invite.href = e.data.substring(14);
-	//	invite.style.visibility = 'visible';
-	//   }
 	}, false);
    </script>
 
