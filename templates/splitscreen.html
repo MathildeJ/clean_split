@@ -89,7 +89,7 @@ function inviteFriend(){
   // we display a popup with the invite link
   var popupWindow = document.getElementById("popupLink").contentWindow;
   popupWindow.postMessage(inviteLink, "*");
-  popupWindow.style.visibility="visible";
+  document.getElementById("popupLink").style.visibility="visible";
 }
 </script>
 
