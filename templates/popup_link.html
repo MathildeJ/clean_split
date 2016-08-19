@@ -62,16 +62,17 @@
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
 	   console.log("the iframe recieves the message ", e.data);
-	   if(info.indexOf('link to open')!==-1){
-                console.log("does it go in here?");
+           document.getElementById("invite").innerHTML = e.data;
+	   //if(info.indexOf('link to open')!==-1){
+             //   console.log("does it go in here?");
 		// we extract the link from the data 
-		var invite_link = document.getElementById('invite');
-		var invite = document.getElementById('invite_a');
-		invite_link.innerHTML = e.data;
-		invite_link.style.visibility = 'visible';
-		invite.href = e.data.substring(14);
-		invite.style.visibility = 'visible';
-	   }
+	//	var invite_link = document.getElementById('invite');
+	//	var invite = document.getElementById('invite_a');
+	//	invite_link.innerHTML = e.data;
+	//	invite_link.style.visibility = 'visible';
+	//	invite.href = e.data.substring(14);
+	//	invite.style.visibility = 'visible';
+	//   }
 	}, false);
    </script>
 
