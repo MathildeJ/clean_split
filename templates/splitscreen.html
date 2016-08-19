@@ -141,14 +141,16 @@ window.addEventListener('message', function(e){
   function acknowledgeFriend() {
     var stretchFriendFrame = document.getElementById("ifrm2");
     var shrinkYourFrame = document.getElementById("ifrm1");
+    var ignoreButton = document.getElementById("ignore");
+    var acknowledgeButton = document.getElementById("acknowledge");
     // we make our friends frame visible
     stretchFriendFrame.style.visibility = "visible";
     // we shrink our frame
     shrinkYourFrame.style.width = "49%";
     // we hide the acknowledge friend button
-    document.getElementById("acknowledge").style.visibilty="hidden";
+    acknowledgeButton.style.visibilty="hidden";
     // we reveal the ignore friend button
-    document.getElementById("ignore").style.visibilty="visible";
+    ignoreButton.style.visibilty="visible";
   }
 </script>
 
