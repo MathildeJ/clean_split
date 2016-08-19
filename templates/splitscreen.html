@@ -79,7 +79,9 @@ window.addEventListener('message', function(e){
 
 <body>
 
-<button onclick="ignoreFriend()">Ignore Friend</button>
+<div id="menu">
+<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+</div>
 
 <!-- navbar -->
 
@@ -120,10 +122,10 @@ window.addEventListener('message', function(e){
     // we replace the ignore button with an acknowledge friend button
     ignoreButton.style.visibility = "hidden";
     // append the acknowledge friend button to the div 
-    var aknowledgeFriend = document.createElement("BUTTON");
+    var acknowledgeFriend = document.createElement("BUTTON");
     var buttonText = document.createTextNode("acknowledge friend"); 
-    aknowledgeFriend.appendChild(buttonText);
-    document.body.appendChild(acknowledgeFriend);
+    acknowledgeFriend.appendChild(buttonText);
+    document.getElementById("menu").appendChild(acknowledgeFriend);
   }
 </script>
 
