@@ -5,7 +5,7 @@ body {
 #exit_button {
 	position: relative;
 	background-color: #ea2020;
-	border: 3px solid black;
+	border: 2px solid black;
 	color: black;
 	padding: 3px 7px;
 	text-align: center;
@@ -30,7 +30,7 @@ body {
 
 #url{
     display: inline-block;
-    border: 3px solid red;
+    border: 2px solid red;
     color: #888;
     height: 15px;
     line-height:10px;
@@ -49,7 +49,8 @@ body {
 }
 
 #submit_button{
-	border: 1px solid black;
+	border: 2px solid black;
+	font-size: 16px;
 	font-weight: bold;
 	background-color: #ED4337;
 }
