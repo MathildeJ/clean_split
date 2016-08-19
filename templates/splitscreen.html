@@ -17,6 +17,7 @@ l.src='https://surfly-s1.com/surfly.js';y.parentNode.insertBefore(l,y);})
 
 <script>
 var sess;
+var inviteLink;
 var settings = {widgetkey:'b84defc4621441ecae5eb10bdec1cb5a', block_until_agent_joins: false, ui_off: true};
 window.addEventListener('DOMContentLoaded', function() {
   Surfly.init(settings, function(init) {
@@ -32,13 +33,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			// get the page url
 			var pageUrl = document.location.href;
 			// append the page url to the session id
-			var res = pageUrl.concat(sessionID);
+			var inviteLink = pageUrl.concat(sessionID);
 		        var invite_link = document.getElementById('invite');
 			var invite = document.getElementById('invite_a');
                         // display the invite link
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
 			//invite_link.style.visibility = 'visible';
-			invite.href = res;
+			invite.href = inviteLink;
 			invite.style.visibility = 'visible';
 			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
@@ -70,7 +71,6 @@ window.addEventListener('message', function(e){
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
                         // set the source of the second iframe to the follower link
 			document.getElementById('ifrm2').src = flink;
-			//document.getElementById('invite').style.visibility = 'hidden';
 			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
@@ -80,6 +80,10 @@ window.addEventListener('message', function(e){
 
 function exitSession(){
   sess.end('https://www.surfly.com');
+}
+
+function inviteFriend(){
+  document.body.appendChild(inviteLink)
 }
 </script>
 
@@ -91,6 +95,7 @@ function exitSession(){
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
         <button class="button" id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
         <button class="button" id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
+        <button class="button" id="invite" onclick="inviteFriend()">Invite Friend</button>
 </div>
 
 <!-- navbar -->
@@ -132,15 +137,6 @@ function exitSession(){
     // we replace the ignore button with an acknowledge friend button
     ignoreButton.style.visibility = "hidden";
     acknowledgeButton.style.visibility = "visible";
-    // append the acknowledge friend button to the div 
-    //var acknowledgeFriend = document.createElement("BUTTON");
-    // we add text to the button
-    //var buttonText = document.createTextNode("acknowledge friend"); 
-    //acknowledgeFriend.appendChild(buttonText);
-    // we give it an id
-    
-    // we give the button an onclick function
-    //document.getElementById("menu").appendChild(acknowledgeFriend);
   }
 </script>
 
