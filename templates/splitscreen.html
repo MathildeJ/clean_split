@@ -100,14 +100,45 @@ function closeIFrame(){
 }
 </script>
 
+<style>
+div.relative {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 3px solid #73AD21  ;
+}
+
+button.absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21  ;
+}
+</style>
+
 </head>
 
 <body>
+<!--
 <div id="buttContainer">
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()" style="float:right; right:20px;">Exit</button>
-        <div id="replaceButton"><button class="button" id="ignore" onclick="ignoreFriend()" style="float:right;">Ignore Friend</div></p>
+        <div id="replaceButton"><button id="ignore" class="button" onclick="ignoreFriend()" style="float:right;">Ignore Friend</div></p>
         <button class="button" id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden float:right;">Acknowledge friend</button>
         <button class="button" id="invite" style="float:right;">Invite Friend</button>
+</div>
+-->
+
+<p>These are using relative positions</p>
+<button class="relative">This div element has position: relative;
+<button class="absolute">This div element has position: absolute;</button>
+</button>
+
+<p> these use align-center </p>
+<div style="align-items:center;">
+ <button>test</button>
+ <button>second test</button>
 </div>
 
 <!-- navbar -->
