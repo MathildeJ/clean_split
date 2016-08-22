@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			// append the page url to the session id
 			inviteLink = pageUrl.concat(sessionID);
                         var popupWindow = document.getElementById('ifrm1').contentWindow;
-                        popupWindow.postMessage(inviteLink);
+                        popupWindow.postMessage(inviteLink, "*");
 		        var invite_link = document.getElementById('invite');
 			var inviteButton = document.getElementById('invite');
                         // display the invite link
