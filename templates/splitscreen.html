@@ -34,31 +34,27 @@ window.addEventListener('DOMContentLoaded', function() {
 			var pageUrl = document.location.href;
 			// append the page url to the session id
 			inviteLink = pageUrl.concat(sessionID);
+		        var invite_link = document.getElementById('invite');
+			var inviteButton = document.getElementById('invite');
                         // display the invite link
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
 			//invite_link.style.visibility = 'visible';
 			//invite.href = inviteLink;
+			inviteButton.style.visibility = 'visible';
 			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
 		})
 		.on('session_ended', function(session) {
 			document.getElementById('exit_button').style.visibility="hidden";
 		}).startLeader('#ifrm1');
-                var startWindow = document.getElementById('ifrm1').contentWindow;
-                console.log("what is the start window? ", startWindow);
-                startWindow.postMessage(inviteLink, "*");
-                var inviteButton = document.getElementById('invite');
 	} 
      }
    });
  });
-
-
 function sendMess(){
 	var url = document.getElementById('url').value;
 	sess.relocate(url);
 }
-
 window.addEventListener('message', function(e){
      var origin = event.origin || event.originalEvent.origin;
      if (origin == "https://surfly-s1.com") {
@@ -77,16 +73,27 @@ window.addEventListener('message', function(e){
 		}
 	}
     }
-
 })
-
 function exitSession(){
   sess.end('https://www.surfly.com');
 }
-
-
+function inviteFriend(){
+  console.log("the inviteLink is", inviteLink);
+  // we hide the invite button
+  document.getElementById("invite").style.visibility = "hidden";
+  // we display a popup with the invite link
+  var popupWindow = document.getElementById("popupLink").contentWindow;
+  popupWindow.postMessage(inviteLink, "*");
+  document.getElementById("popupLink").style.visibility="visible";
+}
 </script>
 
+<script>
+//close popup
+function closeIFrame(){
+     document.getElementById("popupLink").style.visibility="hidden";
+}
+</script>
 
 <style>
 div.relative {
@@ -95,7 +102,6 @@ div.relative {
     height: 200px;
     border: 3px solid #73AD21  ;
 }
-
 button.absolute {
     position: absolute;
     top: 80px;
@@ -114,7 +120,7 @@ button.absolute {
 	<button class="relative" style="visibility:hidden" onclick="exitSession()" id="exit_button">Exit
         <div id="replaceButton"><button id="ignore" onclick="ignoreFriend()" class="absolute">Ignore Friend</div>
         <button  id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden" class="absolute">Acknowledge friend
-        </button></button></button>
+        <button id="invite" class="absolute" onclick="inviteFriend()">Invite Friend</button></button></button></button>
 </div>
 
 
@@ -142,6 +148,7 @@ button.absolute {
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <!-- the frame in which the follower link will be opened -->
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
+<iframe id="popupLink" src="./popup_link" height="300" width="45%" style="top: 200px; left: 300px; display: block; position: absolute; visibility:hidden"></iframe>
 
 
 <script>
@@ -184,3 +191,4 @@ button.absolute {
 </body>
 
 </html>
+

@@ -27,7 +27,6 @@
       .titleText {
          color: white;
       }
-
       .mainText {
          color: white;
       }       
@@ -42,52 +41,18 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1 class="titleText" style="color: white;">Welcome</h1>
-            <h3 class="mainText">Click the link below to invite a friend to join you</h3>
-            <button id="invite" class="absolute" onclick="inviteFriend()">Invite Friend</button>
+            <h3 class="mainText">Use the nav bar above to start browsing</h3>
             <br>
         </div>
     </header>
+    
+    <script>
+       function showLink() {
+         parent.inviteFriend();
+         document.getElementById("inviteButton").visibility="hidden";
+       }
+    </script>
 
-<iframe id="popupLink" src="./popup_link" height="300" width="45%" style="top: 200px; left: 300px; display: block; position: absolute; visibility:hidden"></iframe>
-
-<script>
-        var inviteLink;
-
-        testMessage = function(e) { 
-          console.log(e.data);
-         window.addEventListener('message', testMessage, false); 
-        }
-
-
-	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-	var eventer = window[eventMethod];
-	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
-	// Listen to message from parent window
-	eventer(messageEvent, function (e) {
-	   var info = JSON.stringify(e.data);
-           console.log("the recieved info is ", info);
-           inviteLink = info;
-           //var popupWindow = document.getElementById("popupLink").contentWindow;
-           //popupWindow.postMessage(inviteLink, "*");
-	}, false);
-
-	function inviteFriend(){
-	  console.log("the inviteLink is", inviteLink);
-	  // we hide the invite button
-	  document.getElementById("invite").style.visibility = "hidden";
-	  // we show the popup 
-	  document.getElementById("popupLink").style.visibility="visible"; 
-	}
-
-</script>
-
-<script>
-//close popup
-function closeIFrame(){
-     document.getElementById("popupLink").style.visibility="hidden";
-}
-</script>
 
 </body>
 </html> 

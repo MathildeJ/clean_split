@@ -73,7 +73,6 @@
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
 	// Listen to message from child IFrame window
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
