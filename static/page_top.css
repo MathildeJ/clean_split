@@ -23,8 +23,8 @@ body {
 
 
 #form_wrapper{
-	float: left;
 	display: inline-block;
+	width: 300px;
 }
 
 #url{
