@@ -33,13 +33,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			// get the page url
 			var pageUrl = document.location.href;
 			// append the page url to the session id
-			inviteLink = pageUrl.concat(sessionID);
-		        var invite_link = document.getElementById('invite');
-			var inviteButton = document.getElementById('invite');
-                        // display the invite link
-			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
-			//invite_link.style.visibility = 'visible';
-			//invite.href = inviteLink;
+			var res = pageUrl.concat(sessionID);
+
+			var inviteButton = document.getElementById("invite");
 			inviteButton.style.visibility = 'visible';
 			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
@@ -69,7 +65,6 @@ window.addEventListener('message', function(e){
 			if(flink.indexOf('\\')){ flink = flink.substring(0, flink.length);};
                         // set the source of the second iframe to the follower link
 			document.getElementById('ifrm2').src = flink;
-			document.getElementById('invite_a').style.visibility = 'hidden';
 		}
 	}
     }
@@ -77,6 +72,33 @@ window.addEventListener('message', function(e){
 function exitSession(){
   sess.end('https://www.surfly.com');
 }
+
+// ignore friend button
+function ignoreFriend() {
+    var friendsFrame = document.getElementById("ifrm2");
+    var yourFrame = document.getElementById("ifrm1");
+    var ignoreButton = document.getElementById("ignore");
+
+    if(ignoreButton.innerHTML=="Ignore Friend"){
+	console.log('ok');
+	// we hide our friend's iframe
+	friendsFrame.style.visibility = "hidden";
+	// we make our iframe the size of the screen
+	yourFrame.style.width = "99%";
+	// change button to acknowledge friend
+    	ignoreButton.innerHTML = "Acknowledge Friend";
+	document.getElementById('form_wrapper').style.left="-30%";
+    } else {
+	// we show our friend's iframe
+	friendsFrame.style.visibility = "visible";
+    	// we shrink our frame
+    	yourFrame.style.width = "49%";
+    	// we change the button to ignore friend 
+    	ignoreButton.innerHTML = "Ignore Friend";
+	document.getElementById('form_wrapper').style.left="-32%";
+    }
+}
+
 function inviteFriend(){
   console.log("the inviteLink is", inviteLink);
   // we hide the invite button
@@ -99,80 +121,30 @@ function closeIFrame(){
 </head>
 
 <body>
-
-<div id="buttContainer">
-	<button class="relative" style="visibility:hidden" onclick="exitSession()" id="exit_button">Exit
-        <div id="replaceButton"><button id="ignore" onclick="ignoreFriend()" class="button">Ignore Friend</div>
-        <button  id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden" class="button">Acknowledge friend
-        <button id="invite" class="button" onclick="inviteFriend()">Invite Friend</button></button></button></button>
+<div id="menu">
+	<button class="button" id="exit_button" onclick="exitSession()">Exit</button>
+	<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+	<button id="invite" class="button" onclick="inviteFriend()">Invite Friend</button>
+	<div id="form_wrapper">
+		<form id="nav" action="" method="post">
+			<label style="float:left">
+				<h3 id="title_bar">Nav bar :</h3>
+				<input id="url" type="text" name="url"/>
+			</label>
+			<label>
+			       <input type="button" class="button" id="submit_button" onclick=sendMess() value="Go!" />
+			</label>
+		</form>
+	</div>
 </div>
 
-
-<!-- navbar -->
-
-<div id="form_wrapper" style="visibility:visible;">
-	<form id="nav" action="" method="post">
-		<label>
-			<h3 id="title_bar">Nav bar :</h3>
-		        <input id="url" type="text" name="url" />
-		</label>
-		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
-		</label>
-	</form>
-</div>
-
-
-<!-- display the links at the top of the page -->
-<div id="invite" style="visibility:hidden"></div>
-<a id="invite_a" style="visibility:hidden">Invite link</a>
-
-<!-- iframes -->
+<!-- the two iframes -->
 <!-- the frame in which the leader link is opened -->
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <!-- the frame in which the follower link will be opened -->
-<div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
+<div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right'></iframe></div>
 <!-- the frame in which the invite link is displayed -->
 <iframe id="popupLink" src="./popup_link" height="300" width="45%" style="top: 30%; left: 35%; display: block; position: absolute; visibility:hidden"></iframe>
-
-
-<script>
-  // ignore friend button
-  function ignoreFriend() {
-    var friendsFrame = document.getElementById("ifrm2");
-    var yourFrame = document.getElementById("ifrm1");
-    var ignoreButton = document.getElementById("ignore");
-    var acknowledgeButton = document.getElementById("acknowledge");
-    // we hide our friends iframe
-    friendsFrame.style.visibilty = "hidden";
-    // we make our iframe the size of the screen
-    yourFrame.style.width = "99%";
-    // we replace the ignore button with an acknowledge friend button
-    ignoreButton.style.visibility = "hidden";
-    document.getElementById("replaceButton").appendChild(acknowledgeButton);
-    acknowledgeButton.style.visibility = "visible";
-  }
-</script>
-
-<script>
-  // acknowlegde friend button 
-  function acknowledgeFriend() {
-    var stretchFriendFrame = document.getElementById("ifrm2");
-    var shrinkYourFrame = document.getElementById("ifrm1");
-    var ignoreButton = document.getElementById("ignore");
-    var acknowledgeButton = document.getElementById("acknowledge");
-    // we make our friends frame visible
-    stretchFriendFrame.style.visibility = "visible";
-    // we shrink our frame
-    shrinkYourFrame.style.width = "49%";
-    // we hide the acknowledge friend button
-    acknowledgeButton.style.visibility = "hidden";
-    // we reveal the ignore friend button
-    document.getElementById("replaceButton").appendChild(ignoreButton);
-    ignoreButton.style.visibility = "visible";
-  }
-</script>
-
 </body>
 
 </html>
