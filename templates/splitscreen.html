@@ -38,22 +38,21 @@ window.addEventListener('DOMContentLoaded', function() {
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
 			//invite_link.style.visibility = 'visible';
 			//invite.href = inviteLink;
-			inviteButton.style.visibility = 'visible';
 			document.getElementById('exit_button').style.visibility="visible";
 			sess = session;	
 		})
 		.on('session_ended', function(session) {
 			document.getElementById('exit_button').style.visibility="hidden";
 		}).startLeader('#ifrm1');
+                var startWindow = document.getElementById('ifrm1').contentWindow;
+                console.log("what is the start window? ", startWindow);
+                startWindow.postMessage(inviteLink, "*");
+                var inviteButton = document.getElementById('invite');
 	} 
      }
    });
  });
 
-var startWindow = document.getElementById('ifrm1').contentWindow;
-console.log("what is the start window? ", startWindow);
-startWindow.postMessage(inviteLink, "*");
-var inviteButton = document.getElementById('invite');
 
 function sendMess(){
 	var url = document.getElementById('url').value;
