@@ -53,6 +53,11 @@
 <script>
         var inviteLink;
 
+        testMessage = function(e) { 
+          console.log(e.data);
+         window.addEventListener('message', testMessage, false); 
+
+
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
