@@ -3,6 +3,7 @@
 }
 
 #ifrm1{
+  display: block;
   border-top: red 3px solid;
   border-right: red 3px solid;
   border-left: red 3px solid;
@@ -10,6 +11,7 @@
 }
 
 #ifrm2{
+  display: block;
   border-top: blue 3px solid;
   border-right: blue 3px solid;
   border-left: blue 3px solid;
