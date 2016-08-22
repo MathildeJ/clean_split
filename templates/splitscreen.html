@@ -89,19 +89,19 @@ function exitSession(){
     var ignoreButton = document.getElementById("ignore");
     console.log(ignoreButton.innerHTML);
     console.log(typeof ignoreButton.innerHTML);
-    if(ignoreButton.innerHTML=="Ignore friend"){
+    if(ignoreButton.innerHTML=="Ignore Friend"){
 	console.log('ok');
 	// we hide our friends iframe
 	friendsFrame.style.visibility = "hidden";
 	// we make our iframe the size of the screen
 	yourFrame.style.width = "99%";
-    	ignoreButton.innerHTML = "Acknowledge friend";
+    	ignoreButton.innerHTML = "Acknowledge Friend";
     } else {
 	friendsFrame.style.visibility = "visible";
     	// we shrink our frame
     	yourFrame.style.width = "49%";
     	// we change the button to an ignore friend button
-    	ignoreButton.innerHTML = "Ignore friend";
+    	ignoreButton.innerHTML = "Ignore Friend";
     }
   }
 </script>
@@ -113,7 +113,7 @@ function exitSession(){
 <div id="menu" style="align-items: center; text-align: center;">
 	<button id="ignore" onclick="ignoreFriend()" style="float: right;">Ignore Friend</button>
 	<button class="button" id="exit_button" style="visibility:hidden; float: right;" onclick="exitSession()">Exit</button>
-	<div id="form_wrapper" style="visibility:visible;">
+	<div id="form_wrapper" style="visibility:visible; align-items: center; text-align: center;">
 		<form id="nav" action="" method="post">
 			<label>
 				<h3 id="title_bar" style="float: left;">Nav bar :</h3>
