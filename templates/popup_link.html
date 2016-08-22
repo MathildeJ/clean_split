@@ -50,15 +50,19 @@
     </header>
 
     <script type="text/javascript">
-    function selectText(containerid) {
-        if (document.selection) {
+    function selectText( containerid ) {
+
+        var node = document.getElementById( containerid );
+
+        if ( document.selection ) {
             var range = document.body.createTextRange();
-            range.moveToElementText(document.getElementById(containerid));
+            range.moveToElementText( node  );
             range.select();
-        } else if (window.getSelection) {
+        } else if ( window.getSelection ) {
             var range = document.createRange();
-            range.selectNode(document.getElementById(containerid));
-            window.getSelection().addRange(range);
+            range.selectNodeContents( node );
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange( range );
         }
     }
    </script>
