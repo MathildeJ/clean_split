@@ -16,4 +16,6 @@
   border-right: blue 3px solid;
   border-left: blue 3px solid;
   border-bottom: blue 3px solid;
+  background-image: url(./beer.jpg); 
+  background-size: cover;
 }

@@ -4,6 +4,8 @@ body {
 
 #exit_button {
 	position: relative;
+	visibility:hidden; 
+	float: right;
 	background-color: #ea2020;
 	border: 2px solid black;
 	color: black;
@@ -27,6 +29,8 @@ body {
 	width: 400px;
 	position: relative;
 	left: -35%;
+	visibility:visible; 
+	align-items: flex-start;
 }
 
 #url{
@@ -57,7 +61,7 @@ body {
 	display: inline-block;
 	cursor: pointer; 
 	position: absolute;
-	margin-top: 3px;
+	margin-top: 3.5px;
 }
 
 #title_bar{
@@ -65,8 +69,14 @@ body {
 	display: inline-block;
 }
 
+#menu {
+	align-items: center; 
+	text-align: center;
+}
+
 #ignore {
 	position: relative;
+	float: right;
 	background-color: #ea2020;
 	border: 2px solid black;
 	color: black;
@@ -82,4 +92,8 @@ body {
         font-weight: bold;
 	border-radius: 8px;
 	height: 27px;
+}
+
+#nav {
+	display: inline-block;
 }
