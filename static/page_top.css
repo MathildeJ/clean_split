@@ -53,8 +53,8 @@ body {
 	font-weight: bold;
 	background-color: #ED4337;
 	display: inline-block;
-	cursor:pointer; 
-	float: left;
+	cursor: pointer; 
+	position: absolute;
 }
 
 #title_bar{
