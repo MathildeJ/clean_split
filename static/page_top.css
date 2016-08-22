@@ -23,7 +23,7 @@ body {
 
 
 #form_wrapper{
-	position: relative;
+	float: left;
 	display: inline-block;
 }
 
@@ -54,10 +54,7 @@ body {
 	background-color: #ED4337;
 	display: inline-block;
 	cursor: pointer; 
-	position: relative;
-	margin-top: 3px;
-	margin-right: 5px;
-	float: left;
+	position: absolute;
 }
 
 #title_bar{
