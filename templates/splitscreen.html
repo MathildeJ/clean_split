@@ -87,7 +87,7 @@ function exitSession(){
 </head>
 
 <body>
-<div id="menu" style="text-align:right; align-items: center; display: felx;">
+<div id="menu" style="text-align:right; align-items: center; display: flex;">
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
 	<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
 </div>
@@ -123,6 +123,8 @@ function exitSession(){
     var friendsFrame = document.getElementById("ifrm2");
     var yourFrame = document.getElementById("ifrm1");
     var ignoreButton = document.getElementById("ignore");
+    console.log(ignoreButton.innerHTML);
+    console.log(typeof ignoreButton.innerHTML);
     if(ignoreButton.innerHTML.indexOf("Ignore")){
 	// we hide our friends iframe
 	friendsFrame.style.visibility = "hidden";
@@ -132,9 +134,9 @@ function exitSession(){
     } else {
 	friendsFrame.style.visibility = "visible";
     	// we shrink our frame
-    	shrinkYourFrame.style.width = "49%";
-    	// we change the button to an acknowledge friend button
-    	ignoreButton.innerHTML = "Acknowledge friend";
+    	yourFrame.style.width = "49%";
+    	// we change the button to an ignore friend button
+    	ignoreButton.innerHTML = "Ignore friend";
     }
     //ignoreButton.style.visibility = "hidden";
     //acknowledgeButton.style.visibility = "visible";
