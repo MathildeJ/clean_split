@@ -14,7 +14,7 @@ body {
 	font-size: 16px;
 	margin: 0 auto;
 	cursor: pointer;
-	height: 25px;
+	height: 27px;
 	margin-top: 3px;
 	margin-right: 5px;
         font-weight: bold;
@@ -75,5 +75,5 @@ body {
 	margin-right: 5px;
         font-weight: bold;
 	border-radius: 8px;
-	height: 25px;
+	height: 27px;
 }
