@@ -51,6 +51,8 @@
 <iframe id="popupLink" src="./popup_link" height="300" width="45%" style="top: 200px; left: 300px; display: block; position: absolute; visibility:hidden"></iframe>
 
 <script>
+var inviteLink;
+
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -58,22 +60,22 @@
 	// Listen to message from parent window
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
+           inviteLink = e.data;
 	   console.log("the start page iframe recieves the message ", e.data);
            document.getElementById('invite').style.visibility="visible";
            var popupWindow = document.getElementById("popupLink").contentWindow;
            popupWindow.postMessage(inviteLink, "*");
 	}, false);
-   </script>
-    
-    <script>
-function inviteFriend(){
-  console.log("the inviteLink is", inviteLink);
-  // we hide the invite button
-  document.getElementById("invite").style.visibility = "hidden";
-  // we show the popup 
-  document.getElementById("popupLink").style.visibility="visible"; 
-}
-    </script>
+
+	function inviteFriend(){
+	  console.log("the inviteLink is", inviteLink);
+	  // we hide the invite button
+	  document.getElementById("invite").style.visibility = "hidden";
+	  // we show the popup 
+	  document.getElementById("popupLink").style.visibility="visible"; 
+	}
+
+</script>
 
 <script>
 //close popup
