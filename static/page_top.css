@@ -26,6 +26,7 @@ body {
 	display: inline-block;
 	width: 400px;
 	position: relative;
+	left:-200px;
 }
 
 #url{
