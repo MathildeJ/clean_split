@@ -26,7 +26,7 @@ body {
 	display: inline-block;
 	width: 400px;
 	position: relative;
-	left: 5%;
+	left: -30px;
 }
 
 #url{
@@ -57,7 +57,7 @@ body {
 	display: inline-block;
 	cursor: pointer; 
 	position: absolute;
-	left:20%;
+	left:10px;
 }
 
 #title_bar{
