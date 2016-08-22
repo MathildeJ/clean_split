@@ -87,13 +87,9 @@ function exitSession(){
 </head>
 
 <body>
-<div style="text-align:right;">
+<div id="menu" style="text-align:right; align-items: center; display: felx;">
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
-</div>
-
-<div id="menu">
-<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
-<button id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
+	<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
 </div>
 
 <!-- navbar -->
@@ -127,14 +123,22 @@ function exitSession(){
     var friendsFrame = document.getElementById("ifrm2");
     var yourFrame = document.getElementById("ifrm1");
     var ignoreButton = document.getElementById("ignore");
-    var acknowledgeButton = document.getElementById("acknowledge");
-    // we hide our friends iframe
-    friendsFrame.style.visibilty = "hidden";
-    // we make our iframe the size of the screen
-    yourFrame.style.width = "99%";
-    // we replace the ignore button with an acknowledge friend button
-    ignoreButton.style.visibility = "hidden";
-    acknowledgeButton.style.visibility = "visible";
+    if(ignoreButton.innerHTML.indexOf("Ignore")){
+	// we hide our friends iframe
+	friendsFrame.style.visibility = "hidden";
+	// we make our iframe the size of the screen
+	yourFrame.style.width = "99%";
+    	ignoreButton.innerHTML = "Acknowledge friend";
+    } else {
+	friendsFrame.style.visibility = "visible";
+    	// we shrink our frame
+    	shrinkYourFrame.style.width = "49%";
+    	// we change the button to an acknowledge friend button
+    	ignoreButton.innerHTML = "Acknowledge friend";
+    }
+    //ignoreButton.style.visibility = "hidden";
+    //acknowledgeButton.style.visibility = "visible";
+
     // append the acknowledge friend button to the div 
     //var acknowledgeFriend = document.createElement("BUTTON");
     // we add text to the button
