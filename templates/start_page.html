@@ -60,6 +60,7 @@ var inviteLink;
 	// Listen to message from parent window
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
+           console.log("the info is ", info);
            inviteLink = e.data;
 	   console.log("the start page iframe recieves the message ", e.data);
            document.getElementById('invite').style.visibility="visible";
