@@ -61,6 +61,8 @@ function exitSession(){
 <body>
 <div style="text-align:right;">
 	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
+        <button class="button" id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+        <button class="button" id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden">Acknowledge friend</button>
 </div>
 
 <div id="form_wrapper" style="visibility:visible;">
@@ -75,19 +77,6 @@ function exitSession(){
 	</form>
 </div>
 
-<!-- the navbar -->
-<div id="form_wrapper" style="visibility:visible;">
-	<form id="nav" action="" method="post">
-		<h4 class="text-title">Nav bar</h4>
-		<label>
-			<span>Website :</span>
-		        <input id="url" type="text" name="url" />
-		</label>
-		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
-		</label>
-	</form>
-</div>
 
 <!-- the iframes -->
 <!-- the follower link is opened in this frame -->
@@ -104,6 +93,41 @@ var sessionID = pageUrl.substring(idIndex+6);
 var fullUrl =  "https://surfly-s1.com".concat(sessionID);
 // set the url of the first frame to the follower link
 document.getElementById('ifrm1').src = fullUrl;
+</script>
+
+<script>
+  // ignore friend button
+  function ignoreFriend() {
+    var friendsFrame = document.getElementById("ifrm1");
+    var yourFrame = document.getElementById("ifrm2");
+    var ignoreButton = document.getElementById("ignore");
+    var acknowledgeButton = document.getElementById("acknowledge");
+    // we hide our friends iframe
+    friendsFrame.style.visibilty = "hidden";
+    // we make our iframe the size of the screen
+    yourFrame.style.width = "99%";
+    // we replace the ignore button with an acknowledge friend button
+    ignoreButton.style.visibility = "hidden";
+    acknowledgeButton.style.visibility = "visible";
+  }
+</script>
+
+<script>
+  // acknowlegde friend button 
+  function acknowledgeFriend() {
+    var stretchFriendFrame = document.getElementById("ifrm1");
+    var shrinkYourFrame = document.getElementById("ifrm2");
+    var ignoreButton = document.getElementById("ignore");
+    var acknowledgeButton = document.getElementById("acknowledge");
+    // we make our friends frame visible
+    stretchFriendFrame.style.visibility = "visible";
+    // we shrink our frame
+    shrinkYourFrame.style.width = "49%";
+    // we hide the acknowledge friend button
+    acknowledgeButton.style.visibility = "hidden";
+    // we reveal the ignore friend button
+    ignoreButton.style.visibility = "visible";
+  }
 </script>
 
 </body>

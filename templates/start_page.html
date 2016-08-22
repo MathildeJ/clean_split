@@ -20,14 +20,13 @@
          background-image: url('../static/sunset.jpg');
       }
       
-      #inviteButton {
+      #inviteButt {
          background-color: white;
       }
     
       .titleText {
          color: white;
       }
-
       .mainText {
          color: white;
       }       
@@ -46,6 +45,13 @@
             <br>
         </div>
     </header>
+    
+    <script>
+       function showLink() {
+         parent.inviteFriend();
+         document.getElementById("inviteButton").visibility="hidden";
+       }
+    </script>
 
 
 </body>

@@ -29,6 +29,10 @@
       .mainText {
          color: white;
       }       
+        
+      a {
+        color: white;
+      }
  
     </style>
 
@@ -39,17 +43,29 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h3 class="mainText">Copy-paste the link below to share with a friend!</h3>
-            <div id="invite">Invite link</div>
-            <a id="invite_a" style="visibility:hidden">Invite link</a>
+            <div id="invite" style="color:white" onclick="selectText('invite')">Invite link</div>
             <br>
             <button id="exitButton" class="btn btn-dark btn-lg" onclick="exitPopup()">Close</button>
         </div>
     </header>
 
+    <script type="text/javascript">
+    function selectText(containerid) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+        }
+    }
+   </script>
 
     <script>
         function exitPopup() {
-           parent.closeIframe()
+           parent.closeIFrame();
         }
     </script>
 
@@ -57,24 +73,11 @@
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
 	// Listen to message from child IFrame window
 	eventer(messageEvent, function (e) {
 	   var info = JSON.stringify(e.data);
 	   console.log("the iframe recieves the message ", e.data);
-	   //var invite_link = document.getElementById('invite');
-	   //invite_link.innerHTML = e.data;
-	   //invite_link.style.visibility = 'visible';
-	   if(info.indexOf('link to open')!==-1){
-                console.log("does it go in here?");
-		// we extract the link from the data 
-		var invite_link = document.getElementById('invite');
-		var invite = document.getElementById('invite_a');
-		invite_link.innerHTML = e.data;
-		invite_link.style.visibility = 'visible';
-		invite.href = e.data.substring(14);
-		invite.style.visibility = 'visible';
-	   }
+           document.getElementById("invite").innerHTML = e.data;
 	}, false);
    </script>
 
