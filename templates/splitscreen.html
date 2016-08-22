@@ -34,9 +34,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			var pageUrl = document.location.href;
 			// append the page url to the session id
 			inviteLink = pageUrl.concat(sessionID);
-                        var startWindow = document.getElementById('ifrm1').contentWindow;
-                        startWindow.postMessage(inviteLink, "*");
-			var inviteButton = document.getElementById('invite');
                         // display the invite link
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
 			//invite_link.style.visibility = 'visible';
@@ -52,6 +49,11 @@ window.addEventListener('DOMContentLoaded', function() {
      }
    });
  });
+
+var startWindow = document.getElementById('ifrm1').contentWindow;
+console.log("what is the start window? ", startWindow);
+startWindow.postMessage(inviteLink, "*");
+var inviteButton = document.getElementById('invite');
 
 function sendMess(){
 	var url = document.getElementById('url').value;
