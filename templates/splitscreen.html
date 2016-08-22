@@ -34,9 +34,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			var pageUrl = document.location.href;
 			// append the page url to the session id
 			inviteLink = pageUrl.concat(sessionID);
+                        console.log("the invite link is ", inviteLink);
                         var startWindow = document.getElementById('ifrm1').contentWindow;
                         startWindow.postMessage(inviteLink, "*");
-		        var invite_link = document.getElementById('invite');
 			var inviteButton = document.getElementById('invite');
                         // display the invite link
 			//invite_link.innerHTML = "Copy-paste the following link to invite a friend: "+ res;
