@@ -34,8 +34,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			var pageUrl = document.location.href;
 			// append the page url to the session id
 			inviteLink = pageUrl.concat(sessionID);
-                        var popupWindow = document.getElementById('ifrm1').contentWindow;
-                        popupWindow.postMessage(inviteLink, "*");
+                        var startWindow = document.getElementById('ifrm1').contentWindow;
+                        startWindow.postMessage(inviteLink, "*");
 		        var invite_link = document.getElementById('invite');
 			var inviteButton = document.getElementById('invite');
                         // display the invite link
@@ -114,7 +114,7 @@ button.absolute {
 	<button class="relative" style="visibility:hidden" onclick="exitSession()" id="exit_button">Exit
         <div id="replaceButton"><button id="ignore" onclick="ignoreFriend()" class="absolute">Ignore Friend</div>
         <button  id="acknowledge" onclick="acknowledgeFriend()" style="visibility:hidden" class="absolute">Acknowledge friend
-        <button id="invite" class="absolute" onclick="inviteFriend()">Invite Friend</button></button></button></button>
+        </button></button></button>
 </div>
 
 

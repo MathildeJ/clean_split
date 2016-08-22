@@ -43,7 +43,7 @@
         <div class="text-vertical-center">
             <h1 class="titleText" style="color: white;">Welcome</h1>
             <h3 class="mainText">Click the link below to invite a friend to join you</h3>
-            <button id="invite" class="absolute" onclick="inviteFriend()" style="visibility: hidden">Invite Friend</button>
+            <button id="invite" class="absolute" onclick="inviteFriend()">Invite Friend</button>
             <br>
         </div>
     </header>
@@ -60,6 +60,8 @@
 	   var info = JSON.stringify(e.data);
 	   console.log("the start page iframe recieves the message ", e.data);
            document.getElementById('invite').style.visibility="visible";
+           var popupWindow = document.getElementById("popupLink").contentWindow;
+           popupWindow.postMessage(inviteLink, "*");
 	}, false);
    </script>
     
@@ -68,10 +70,8 @@ function inviteFriend(){
   console.log("the inviteLink is", inviteLink);
   // we hide the invite button
   document.getElementById("invite").style.visibility = "hidden";
-  // we display a popup with the invite link
-  var popupWindow = document.getElementById("popupLink").contentWindow;
-  popupWindow.postMessage(inviteLink, "*");
-  document.getElementById("popupLink").style.visibility="visible";
+  // we show the popup 
+  document.getElementById("popupLink").style.visibility="visible"; 
 }
     </script>
 
