@@ -25,7 +25,8 @@ body {
 #form_wrapper{
 	display: inline-block;
 	width: 400px;
-	left: 0px;
+	position: absolute;
+	left: 10px;
 }
 
 #url{
