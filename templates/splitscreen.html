@@ -96,12 +96,14 @@ function exitSession(){
 	// we make our iframe the size of the screen
 	yourFrame.style.width = "99%";
     	ignoreButton.innerHTML = "Acknowledge Friend";
+	document.getElementById('form_wrapper').style.left="-33%";
     } else {
 	friendsFrame.style.visibility = "visible";
     	// we shrink our frame
     	yourFrame.style.width = "49%";
     	// we change the button to an ignore friend button
     	ignoreButton.innerHTML = "Ignore Friend";
+	document.getElementById('form_wrapper').style.left="-35%";
     }
   }
 </script>
