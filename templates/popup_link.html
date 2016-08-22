@@ -43,13 +43,25 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h3 class="mainText">Copy-paste the link below to share with a friend!</h3>
-            <div id="invite" style="color:white">Invite link</div>
-            <a id="invite_a" style="visibility:hidden">Invite link</a>
+            <div id="invite" style="color:white" onclick="selectText('selectable')>Invite link</div>
             <br>
             <button id="exitButton" class="btn btn-dark btn-lg" onclick="exitPopup()">Close</button>
         </div>
     </header>
 
+    <script type="text/javascript">
+    function selectText(containerid) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+        }
+    }
+   </script>
 
     <script>
         function exitPopup() {
