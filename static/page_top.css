@@ -54,10 +54,10 @@ body {
 	background-color: #ED4337;
 	display: inline-block;
 	cursor: pointer; 
-	position: absolute;
+	position: relative;
 	margin-top: 3px;
 	margin-right: 5px;
-	left: 20%;
+	float: left;
 }
 
 #title_bar{
