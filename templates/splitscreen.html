@@ -81,6 +81,29 @@ window.addEventListener('message', function(e){
 function exitSession(){
   sess.end('https://www.surfly.com');
 }
+
+  // ignore friend button
+  function ignoreFriend() {
+    var friendsFrame = document.getElementById("ifrm2");
+    var yourFrame = document.getElementById("ifrm1");
+    var ignoreButton = document.getElementById("ignore");
+    console.log(ignoreButton.innerHTML);
+    console.log(typeof ignoreButton.innerHTML);
+    if(ignoreButton.innerHTML=="Ignore friend"){
+	console.log('ok');
+	// we hide our friends iframe
+	friendsFrame.style.visibility = "hidden";
+	// we make our iframe the size of the screen
+	yourFrame.style.width = "99%";
+    	ignoreButton.innerHTML = "Acknowledge friend";
+    } else {
+	friendsFrame.style.visibility = "visible";
+    	// we shrink our frame
+    	yourFrame.style.width = "49%";
+    	// we change the button to an ignore friend button
+    	ignoreButton.innerHTML = "Ignore friend";
+    }
+  }
 </script>
 
 
@@ -116,31 +139,6 @@ function exitSession(){
 <div class="box"><iframe id="ifrm1" src="" height="700" width="49%" align='left'></iframe></div>
 <!-- the frame in which the follower link will be opened -->
 <div class="box"><iframe id="ifrm2" src="./fourth_frame" height="700" width="49%" align='right' style="background-image: url(../static/beer.jpg); background-size: cover;"></iframe></div>
-
-<script>
-  // ignore friend button
-  function ignoreFriend() {
-    var friendsFrame = document.getElementById("ifrm2");
-    var yourFrame = document.getElementById("ifrm1");
-    var ignoreButton = document.getElementById("ignore");
-    console.log(ignoreButton.innerHTML);
-    console.log(typeof ignoreButton.innerHTML);
-    if(ignoreButton.innerHTML=="Ignore friend"){
-	console.log('ok');
-	// we hide our friends iframe
-	friendsFrame.style.visibility = "hidden";
-	// we make our iframe the size of the screen
-	yourFrame.style.width = "99%";
-    	ignoreButton.innerHTML = "Acknowledge friend";
-    } else {
-	friendsFrame.style.visibility = "visible";
-    	// we shrink our frame
-    	yourFrame.style.width = "49%";
-    	// we change the button to an ignore friend button
-    	ignoreButton.innerHTML = "Ignore friend";
-    }
-  }
-</script>
 
 </body>
 
