@@ -61,7 +61,7 @@ body {
 }
 
 #ignore {
-	position: absolute;
+	position: relative;
 	background-color: #ea2020;
 	border: 2px solid black;
 	color: black;
