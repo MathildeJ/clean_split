@@ -54,7 +54,10 @@ body {
 	background-color: #ED4337;
 	display: inline-block;
 	cursor: pointer; 
-	position: relative;
+	position: absolute;
+	margin-top: 3px;
+	margin-right: 5px;
+	left: 20%;
 }
 
 #title_bar{
