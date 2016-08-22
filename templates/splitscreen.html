@@ -88,8 +88,8 @@ function exitSession(){
 
 <body>
 <div id="menu" style="text-align:right; align-items: center; display: flex;">
-	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
 	<button id="ignore" onclick="ignoreFriend()">Ignore Friend</button>
+	<button class="button" id="exit_button" style="visibility:hidden" onclick="exitSession()">Exit</button>
 </div>
 
 <!-- navbar -->
@@ -125,7 +125,8 @@ function exitSession(){
     var ignoreButton = document.getElementById("ignore");
     console.log(ignoreButton.innerHTML);
     console.log(typeof ignoreButton.innerHTML);
-    if(ignoreButton.innerHTML.indexOf("Ignore")){
+    if(ignoreButton.innerHTML=="Ignore friend"){
+	console.log('ok');
 	// we hide our friends iframe
 	friendsFrame.style.visibility = "hidden";
 	// we make our iframe the size of the screen
