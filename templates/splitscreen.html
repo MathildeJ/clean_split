@@ -113,37 +113,18 @@ function exitSession(){
 <div id="menu" style="align-items: center; text-align: center;">
 	<button id="ignore" onclick="ignoreFriend()" style="float: right;">Ignore Friend</button>
 	<button class="button" id="exit_button" style="visibility:hidden; float: right;" onclick="exitSession()">Exit</button>
-	<div id="form_wrapper" style="visibility:visible; align-items: center; text-align: center;">
+	<div id="form_wrapper" style="visibility:visible; align-items: left; text-align: center;">
 		<form id="nav" action="" method="post">
 			<label>
 				<h3 id="title_bar" style="float: left;">Nav bar :</h3>
-				<input id="url" type="text" name="url" style="float: left;" />
+				<input id="url" type="text" name="url" style="float: left; display: inline-block;" />
 			</label>
 			<label>
-			       <input type="button" style="float: left;" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
+			       <input type="button" class="button" id="submit_button" style="cursor:pointer; float: left;" onclick=sendMess() value="Go!" />
 			</label>
 		</form>
 	</div>
 </div>
-
-<!-- navbar 
-
-<div id="form_wrapper" style="visibility:visible;">
-	<form id="nav" action="" method="post">
-		<label>
-			<h3 id="title_bar">Nav bar :</h3>
-		        <input id="url" type="text" name="url" />
-		</label>
-		<label>
-		       <input type="button" class="button" id="submit_button" style="cursor:pointer;" onclick=sendMess() value="Go!" />
-		</label>
-	</form>
-</div>
--->
-
-<!-- display the links at the top of the page -->
-<div id="invite" style="visibility:hidden"></div>
-<a id="invite_a" style="visibility:hidden">Invite link</a>
 
 <!-- the two iframes -->
 <!-- the frame in which the leader link is opened -->
